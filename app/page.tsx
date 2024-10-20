@@ -3,8 +3,8 @@ import ColorPicker from "@/components/ColorPicker";
 import { useEffect, useMemo, useState } from "react";
 
 export default function Home() {
-  const [color1, setColor1] = useState("hsl(145, 44%, 37%)");
-  const [color2, setColor2] = useState("hsl(190, 53%, 56%)");
+  const [color1, setColor1] = useState("hsl(350, 73%, 44%)");
+  const [color2, setColor2] = useState("hsl(274, 65%, 12%)");
 
   const colors = useMemo(() => {
     const steps = 10;
