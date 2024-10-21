@@ -1,18 +1,24 @@
 "use client";
 import ColorPicker from "@/components/ColorPicker";
+import { Input } from "@/components/ui/input";
 import { useEffect, useMemo, useState } from "react";
 
 export default function Home() {
-  const [color1, setColor1] = useState("hsl(350, 73%, 44%)");
-  const [color2, setColor2] = useState("hsl(274, 65%, 12%)");
+  const [bgColor1, setBgColor1] = useState("hsl(350, 73%, 44%)");
+  const [bgColor2, setBgColor2] = useState("hsl(274, 65%, 12%)");
+
+  const [qrValue, setQrValue] = useState("");
+
+  const [qrBgColor, setQrBgColor] = useState("hsl(0, 0%, 100%)");
+  const [qrFgColor, setQrFgColor] = useState("hsl(9, 0%, 0%)");
 
   const colors = useMemo(() => {
     const steps = 10;
     const colors = [];
 
     // Convert HSL strings to arrays [hue, saturation, lightness]
-    const start = parseHSL(color1);
-    const end = parseHSL(color2);
+    const start = parseHSL(bgColor1);
+    const end = parseHSL(bgColor2);
 
     // Calculate the step difference for hue, saturation, and lightness
     const hueStep = (end[0] - start[0]) / steps;
@@ -34,7 +40,7 @@ export default function Home() {
     }
 
     return colors.join(",");
-  }, [color1, color2]);
+  }, [bgColor1, bgColor2]);
 
   // Helper function to parse HSL string into [hue, saturation, lightness]
   function parseHSL(hslString: string) {
@@ -63,11 +69,37 @@ export default function Home() {
         ></div>
       </section>
       <section>
-        <p className="pb-2">Colors:</p>
-        <div className="flex gap-6">
-          <ColorPicker color={color1} setColor={setColor1} />
-          <ColorPicker color={color2} setColor={setColor2} />
-        </div>
+        <section className="py-2">
+          <h2 className="text-lg pb-1 font-bold">QR Code</h2>
+          <div className="py-2">
+            <p className="pb-2">value:</p>
+            <Input
+              value={qrValue}
+              onChange={(ev) => setQrValue(ev.target.value)}
+            />
+          </div>
+          <div className="py-2">
+            <p className="pb-2 font-semibold">QR code colors:</p>
+            <div className="flex gap-12 ml-3">
+              <div className="flex justify-center flex-col items-center">
+                <p className="pb-2">Foreground color</p>
+                <ColorPicker color={qrBgColor} setColor={setQrBgColor} />
+              </div>
+              <div className="flex justify-center flex-col items-center">
+                <p className="pb-2">Background color</p>
+                <ColorPicker color={qrFgColor} setColor={setQrFgColor} />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-2">
+          <h2 className="text-lg pb-3 font-bold">Gradient</h2>
+          <p className="pb-2">Colors:</p>
+          <div className="flex gap-6">
+            <ColorPicker color={bgColor1} setColor={setBgColor1} />
+            <ColorPicker color={bgColor2} setColor={setBgColor2} />
+          </div>
+        </section>
       </section>
     </main>
   );
