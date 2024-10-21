@@ -2,6 +2,7 @@
 import ColorPicker from "@/components/ColorPicker";
 import { Input } from "@/components/ui/input";
 import { useEffect, useMemo, useState } from "react";
+import { QRCode } from "react-qrcode-logo";
 
 export default function Home() {
   const [bgColor1, setBgColor1] = useState("hsl(350, 73%, 44%)");
@@ -58,7 +59,7 @@ export default function Home() {
     <main className="grid grid-cols-2 gap-4 h-full">
       <section className="flex justify-center items-center h-full">
         <div
-          className="w-full border border-[inset] max-w-[300px] min-h-[400px] rounded-lg shadow"
+          className="w-full border px-10 pt-5 border-[inset] max-w-[300px] min-h-[400px] rounded-lg shadow"
           style={{
             backgroundImage: `linear-gradient(
     45deg,
@@ -66,7 +67,11 @@ export default function Home() {
   )
 `,
           }}
-        ></div>
+        >
+          <div className="rounded-lg overflow-hidden">
+            <QRCode value={qrValue} eyeRadius={10} qrStyle="fluid" bgColor={qrBgColor} fgColor={qrFgColor} />
+          </div>
+        </div>
       </section>
       <section>
         <section className="py-2">
