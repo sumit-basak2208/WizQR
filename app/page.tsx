@@ -59,7 +59,7 @@ export default function Home() {
     <main className="grid grid-cols-2 gap-4 h-full">
       <section className="flex justify-center items-center h-full">
         <div
-          className="w-full border px-10 pt-5 border-[inset] max-w-[300px] min-h-[400px] rounded-lg shadow"
+          className="w-full border px-7 pt-7 border-[inset] max-w-[270px] min-h-[420px] rounded-lg shadow"
           style={{
             backgroundImage: `linear-gradient(
     45deg,
@@ -86,11 +86,11 @@ export default function Home() {
           <div className="py-2">
             <p className="pb-2 font-semibold">QR code colors:</p>
             <div className="flex gap-12 ml-3">
-              <div className="flex justify-center flex-col items-center">
+              <div>
                 <p className="pb-2">Foreground color</p>
                 <ColorPicker color={qrBgColor} setColor={setQrBgColor} />
               </div>
-              <div className="flex justify-center flex-col items-center">
+              <div>
                 <p className="pb-2">Background color</p>
                 <ColorPicker color={qrFgColor} setColor={setQrFgColor} />
               </div>
