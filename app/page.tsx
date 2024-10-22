@@ -51,9 +51,9 @@ export default function Home() {
     return [hue, saturation, lightness];
   }
 
-  useEffect(() => {
-    console.log(colors);
-  }, [colors]);
+  // useEffect(() => {
+  //   console.log(colors);
+  // }, [colors]);
 
   return (
     <main className="grid grid-cols-2 gap-4 h-full">
@@ -77,8 +77,10 @@ export default function Home() {
         <section className="py-2">
           <h2 className="text-lg pb-1 font-bold">QR Code</h2>
           <div className="py-2">
-            <p className="pb-2">value:</p>
+            <p className="pb-2">Business URL:</p>
             <Input
+              type="link"
+              placeholder="https://www.example.com"
               value={qrValue}
               onChange={(ev) => setQrValue(ev.target.value)}
             />
