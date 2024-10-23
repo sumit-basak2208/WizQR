@@ -1,5 +1,6 @@
 "use client";
 import ColorPicker from "@/components/ColorPicker";
+import EasingCurve from "@/components/EasingCurve";
 import { Input } from "@/components/ui/input";
 import { useEffect, useMemo, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
@@ -69,7 +70,13 @@ export default function Home() {
           }}
         >
           <div className="rounded-lg overflow-hidden">
-            <QRCode value={qrValue} eyeRadius={10} qrStyle="fluid" bgColor={qrBgColor} fgColor={qrFgColor} />
+            <QRCode
+              value={qrValue}
+              eyeRadius={10}
+              qrStyle="fluid"
+              bgColor={qrBgColor}
+              fgColor={qrFgColor}
+            />
           </div>
         </div>
       </section>
@@ -106,6 +113,11 @@ export default function Home() {
             <ColorPicker color={bgColor1} setColor={setBgColor1} />
             <ColorPicker color={bgColor2} setColor={setBgColor2} />
           </div>
+        </section>
+        <section className="py-2">
+          <h2 className="text-lg pb-3 font-bold">Curve</h2>
+          <p className="pb-2">Colors:</p>
+          <EasingCurve/>
         </section>
       </section>
     </main>
