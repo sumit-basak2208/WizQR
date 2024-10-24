@@ -1,5 +1,6 @@
-"uuse client"
+"uuse client";
 
+import { RefreshCw } from "lucide-react";
 import React, { useState, useCallback, useRef, useEffect } from "react";
 
 interface Point {
@@ -65,7 +66,7 @@ export default function EasingCurve({ setPoints }: { setPoints: Function }) {
   };
 
   const calculatePercentagePoints = (): number[] => {
-    return getEqualDistancePoints().map((pt) =>  (pt.x / width)*100);
+    return getEqualDistancePoints().map((pt) => (pt.x / width) * 100);
   };
 
   // Update parent component whenever the control points or curve points change
@@ -75,7 +76,20 @@ export default function EasingCurve({ setPoints }: { setPoints: Function }) {
   }, [controlPoints]);
 
   return (
-    <div className="relative group">
+    <div className="relative group w-fit">
+      <button className="absolute group-hover:block hidden left-2 top-2">
+        <RefreshCw
+          onClick={(ev) =>
+            setControlPoints({
+              p1: { x: 50, y: 150 },
+              p2: { x: 150, y: 50 },
+            })
+          }
+          className="text-white"
+          width={20}
+          height={20}
+        />
+      </button>
       {/* SVG for curve */}
       <svg
         ref={svgRef}
