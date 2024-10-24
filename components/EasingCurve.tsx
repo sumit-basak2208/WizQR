@@ -1,11 +1,13 @@
-import React, { useState, useCallback, useRef } from "react";
+"uuse client"
+
+import React, { useState, useCallback, useRef, useEffect } from "react";
 
 interface Point {
   x: number;
   y: number;
 }
 
-const EasingCurve: React.FC = () => {
+export default function EasingCurve({ setPoints }: { setPoints: Function }) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [controlPoints, setControlPoints] = useState<{ p1: Point; p2: Point }>({
     p1: { x: 50, y: 150 }, // Control point 1
@@ -56,16 +58,24 @@ const EasingCurve: React.FC = () => {
 
   const getEqualDistancePoints = (): Point[] => {
     const points: Point[] = [];
-    for (let i = 0; i <= 5; i++) {
-      points.push(calculateBezierPoint(i / 5));
+    for (let i = 0; i < 10; i++) {
+      points.push(calculateBezierPoint(i / 10));
     }
     return points;
   };
 
-  const curvePoints = getEqualDistancePoints();
+  const calculatePercentagePoints = (): number[] => {
+    return getEqualDistancePoints().map((pt) =>  (pt.x / width)*100);
+  };
+
+  // Update parent component whenever the control points or curve points change
+  useEffect(() => {
+    const percentagePoints = calculatePercentagePoints();
+    setPoints(percentagePoints);
+  }, [controlPoints]);
 
   return (
-    <div className="relative">
+    <div className="relative group">
       {/* SVG for curve */}
       <svg
         ref={svgRef}
@@ -73,22 +83,37 @@ const EasingCurve: React.FC = () => {
         height={height}
         className="bg-gray-900 rounded-lg"
       >
-        {/* Cubic Bézier Curve */}
+        <line
+          stroke="white"
+          strokeDasharray="0,6"
+          strokeWidth="3px"
+          strokeLinecap="round"
+          x1="200"
+          y1="0"
+          x2={controlPoints.p2.x}
+          y2={controlPoints.p2.y}
+        ></line>
+        <line
+          stroke="white"
+          strokeDasharray="0,6"
+          strokeWidth="3px"
+          strokeLinecap="round"
+          x1="0"
+          y1="200"
+          x2={controlPoints.p1.x}
+          y2={controlPoints.p1.y}
+        ></line>
         <path
           d={`M 0 ${height} C ${controlPoints.p1.x} ${controlPoints.p1.y}, ${controlPoints.p2.x} ${controlPoints.p2.y}, ${width} 0`}
           stroke="white"
           fill="transparent"
           strokeWidth="2"
         />
-        {/* Equally spaced points on the curve */}
-        {curvePoints.map((pt, index) => (
-          <circle key={index} cx={pt.x} cy={pt.y} r="4" fill="red" />
-        ))}
       </svg>
 
       {/* Control buttons */}
       <button
-        className="absolute bg-white rounded-full w-6 h-6"
+        className="absolute bg-white rounded-full w-6 h-6 shadow-lg border"
         style={{
           left: `${controlPoints.p1.x - 12}px`,
           top: `${controlPoints.p1.y - 12}px`,
@@ -97,16 +122,16 @@ const EasingCurve: React.FC = () => {
           e.preventDefault();
           const onMouseMove = (ev: MouseEvent) => handleDrag("p1", ev as any);
           const onMouseUp = () => {
-            window.removeEventListener("mousemove", onMouseMove);
-            window.removeEventListener("mouseup", onMouseUp);
+            globalThis.removeEventListener("mousemove", onMouseMove);
+            globalThis.removeEventListener("mouseup", onMouseUp);
           };
-          window.addEventListener("mousemove", onMouseMove);
-          window.addEventListener("mouseup", onMouseUp);
+          globalThis.addEventListener("mousemove", onMouseMove);
+          globalThis.addEventListener("mouseup", onMouseUp);
         }}
       ></button>
 
       <button
-        className="absolute bg-white rounded-full w-6 h-6"
+        className="absolute bg-white rounded-full w-6 h-6 shadow-lg border"
         style={{
           left: `${controlPoints.p2.x - 12}px`,
           top: `${controlPoints.p2.y - 12}px`,
@@ -115,24 +140,13 @@ const EasingCurve: React.FC = () => {
           e.preventDefault();
           const onMouseMove = (ev: MouseEvent) => handleDrag("p2", ev as any);
           const onMouseUp = () => {
-            window.removeEventListener("mousemove", onMouseMove);
-            window.removeEventListener("mouseup", onMouseUp);
+            globalThis.removeEventListener("mousemove", onMouseMove);
+            globalThis.removeEventListener("mouseup", onMouseUp);
           };
-          window.addEventListener("mousemove", onMouseMove);
-          window.addEventListener("mouseup", onMouseUp);
+          globalThis.addEventListener("mousemove", onMouseMove);
+          globalThis.addEventListener("mouseup", onMouseUp);
         }}
       ></button>
-
-      {/* Display the equally spaced points */}
-      <div className="mt-4">
-        {curvePoints.map((pt, index) => (
-          <div key={index}>
-            Point {index + 1}: (x: {Math.round(pt.x)}, y: {Math.round(pt.y)})
-          </div>
-        ))}
-      </div>
     </div>
   );
-};
-
-export default EasingCurve;
+}
