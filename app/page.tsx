@@ -60,9 +60,9 @@ export default function Home() {
 
   return (
     <main className="grid grid-cols-2 gap-4 h-full">
-      <section className="flex justify-center items-center h-full">
+      <section className="flex relative justify-center items-center h-full">
         <div
-          className="w-full border px-7 pt-7 border-[inset] max-w-[270px] min-h-[420px] rounded-lg shadow"
+          className="w-full sticky top-10 border px-7 pt-7 border-[inset] max-w-[270px] min-h-[420px] rounded-lg shadow"
           style={{
             backgroundImage: `linear-gradient(
     45deg,
