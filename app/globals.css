@@ -71,3 +71,19 @@ canvas {
     @apply bg-background text-foreground;
   }
 }
+
+.design-container {
+  background: repeating-conic-gradient(
+        from 30deg,
+        #0000 0 120deg,
+        #3c3c3c 0 180deg
+      )
+      calc(0.5 * 200px) calc(0.5 * 200px * 0.577),
+    repeating-conic-gradient(
+      from 30deg,
+      #1d1d1d 0 60deg,
+      #4e4f51 0 120deg,
+      #3c3c3c 0 180deg
+    );
+  background-size: 200px calc(200px * 0.577);
+}
