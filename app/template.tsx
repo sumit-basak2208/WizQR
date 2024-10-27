@@ -12,14 +12,7 @@ export default function DashboardTemplate({
 }) {
   return (
     <>
-      <Navbar />
-      {/* <div className="bg-stone-200/90 grid grid-cols-[220px,_1fr] h-[calc(100dvh-52px)] gap-4 p-4"> */}
-      <div className="bg-stone-200/90 h-[calc(100dvh-52px)] gap-4 p-4">
-        {/* <SideNavbar/> */}
-        <div className="bg-white rounded-lg p-3 pb-4 shadow min-h-[calc(100dvh-90px)]">
-          <div className="max-w-6xl mx-auto">{children}</div>
-        </div>
-      </div>
+      <div className="h-[calc(100dvh-52px)]">{children}</div>
     </>
   );
 }
