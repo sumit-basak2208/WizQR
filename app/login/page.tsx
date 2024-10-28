@@ -1,5 +1,4 @@
 import SignIn from "@/components/SignIn";
-import { Input } from "@/components/ui/input";
 import * as motion from "framer-motion/client";
 
 export default function Login() {

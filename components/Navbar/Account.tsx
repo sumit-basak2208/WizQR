@@ -30,10 +30,15 @@ export default function Account() {
         <Link
           href="/login"
           // onClick={() => signIn("google", { callbackUrl: "/chat" })}
-          className="flex bg-black text-white items-center font-semibold gap-2 px-4 py-2"
+          className="overflow-hidden border-l-[3px] border-black group flex bg-black items-center font-semibold gap-2 px-4 py-2 transition-all relative after:absolute after:inset-0 after:translate-x-[calc(-100%-10px)] hover:after:translate-x-0 after:bg-white after:transition-all"
         >
-          <span className="mb-1">Login</span>
-          <LogIn size={20} />
+          <span className="group-hover:font-bold group-hover:text-black text-white mb-1 relative z-10">
+            Login
+          </span>
+          <LogIn
+            className="group-hover:stroke-2 group-hover:text-black text-white mb-1 relative z-10"
+            size={20}
+          />
         </Link>
       ) : (
         <div className="px-4 py-2">
