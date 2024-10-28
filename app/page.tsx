@@ -12,8 +12,8 @@ export default function Home() {
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </p>
-            <div className="w-fit bg-black rounded group">
-              <button className="flex gap-4 px-4 py-2 bg-white text-xl transition-all group-hover:translate-x-1 group-hover:-translate-y-1 active:!translate-x-0 active:!translate-y-0 font-bold border-2 border-black rounded mt-5">
+            <div className="w-fit bg-black rounded">
+              <button className="flex gap-4 px-4 py-2 bg-white text-xl transition-all translate-x-1 -translate-y-1 active:!translate-x-0 active:!translate-y-0 font-bold border-2 border-black rounded mt-5">
                 <span>Get started</span>
                 <ArrowRightIcon strokeWidth={2.5} className="mt-1" />
               </button>
