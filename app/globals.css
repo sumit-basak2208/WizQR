@@ -87,3 +87,13 @@ canvas {
     );
   background-size: 200px calc(200px * 0.577);
 }
+
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
