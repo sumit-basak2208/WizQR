@@ -8,7 +8,7 @@ export default function Login() {
       <div className="hidden md:block h-[calc(100dvh-46px)] overflow-hidden relative">
         <motion.div
           animate={{ x: 200, y: 115.5 }}
-          transition={{ ease: "linear", repeat: Infinity, duration: 3 }}
+          transition={{ ease: "linear", repeat: Infinity, duration: 4 }}
           className="design-container absolute inset-0 -top-[250px] -left-[250px]"
         ></motion.div>
       </div>
@@ -32,7 +32,7 @@ export default function Login() {
           />
         </div>
         <button
-          className="bg-white text-center w-80 rounded-lg mt-5 h-12 relative text-black text-xl font-semibold group border"
+          className="bg-white text-center w-80 rounded-lg mt-5 h-12 relative text-black hover:text-white transition-colors text-xl font-semibold group border"
           type="button"
         >
           <p className="-translate-x-2">Login</p>
@@ -41,6 +41,9 @@ export default function Login() {
             <LogInIcon />
           </div>
         </button>
+        <p className="text-gray-600 text-sm mt-4">
+          Dont have an account? <button className="text-purple-400 hover:underline font-semibold">Sign up!</button>
+        </p>
       </div>
     </main>
   );
