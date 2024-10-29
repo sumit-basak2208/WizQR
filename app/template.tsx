@@ -8,7 +8,7 @@ export default function DashboardTemplate({
   return (
     <>
       <Navbar/>
-      <div className="h-[calc(100dvh-52px)]">{children}</div>
+      <div className="">{children}</div>
     </>
   );
 }
