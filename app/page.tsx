@@ -35,7 +35,7 @@ export default function Home() {
           ></motion.div>
         </div>
       </main>
-      <section className="mx-10">
+      <section className="overflow-hidden my-10">
         <FloatingCard />
       </section>
     </>
