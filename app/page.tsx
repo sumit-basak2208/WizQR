@@ -1,3 +1,4 @@
+import FloatingCard from "@/components/home/FloatingCard";
 import * as motion from "framer-motion/client";
 import { ArrowRightIcon } from "lucide-react";
 
@@ -8,7 +9,8 @@ export default function Home() {
         <div className="flex border-r-4 border-black relative items-center">
           <div className="ml-10 mb-10">
             <h1 className="text-3xl font-bold">
-              Create Your Custom QR-Linked <br/>Cards with WizQR
+              Create Your Custom QR-Linked <br />
+              Cards with WizQR
             </h1>
             <p className="text-gray-800 mt-3 max-w-[500px]">
               Design unique, eye-catching cards that seamlessly connect your
@@ -25,7 +27,7 @@ export default function Home() {
           </div>
           <div className="w-16 h-16 absolute border-t-4 bg-white -bottom-[34px] -right-[31.5px] z-20 border-black rotate-[50deg]"></div>
         </div>
-        <div className="hidden md:block h-[calc(100dvh-46px)] overflow-hidden relative">
+        <div className="hidden md:block h-[calc(100dvh-46px)] overflow-hidden relative border-b-4 border-black">
           <motion.div
             animate={{ x: 200, y: 115.5 }}
             transition={{ ease: "linear", repeat: Infinity, duration: 4 }}
@@ -33,6 +35,9 @@ export default function Home() {
           ></motion.div>
         </div>
       </main>
+      <section className="mx-10">
+        <FloatingCard />
+      </section>
     </>
   );
 }
