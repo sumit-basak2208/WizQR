@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 
 export default function FloatingCard() {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true });
   return (
     <div className="relative min-w-[1024px] h-screen">
       {/* Each thread and card pair */}
@@ -17,17 +19,28 @@ export default function FloatingCard() {
           fontFamily: "var(--Lobster)",
         }}
       >
-        <div className="text-white text-9xl font-bold ml-20">
-          Elevate your{" "}
-          <TypeAnimation
-            sequence={["business.", 1000, "career.", 1000, "website.", 1000]}
-            repeat={Infinity}
-            speed={50}
-          ></TypeAnimation>
-        </div>
-        <p className="text-white text-3xl font-bold ml-20 mt-4">
-          With custom cards, designed for your need.
-        </p>
+        <motion.div
+          initial={{ translateX: "-100%" }}
+          animate={isInView ? { translateX: 0 } : { translateX: "-100%" }}
+          transition={{
+            type: "spring",
+            stiffness: 120,
+            damping: 10,
+            delay: 0.2,
+            duration: 5,
+          }}
+        >
+          <div ref={cardRef} className="text-white text-9xl font-bold ml-20">
+            Elevate your{" "}
+            <TypeAnimation
+              sequence={["business.", 1000, "career.", 1000, "website.", 1000]}
+              repeat={Infinity}
+            ></TypeAnimation>
+          </div>
+          <p className="text-white text-3xl font-bold ml-20 mt-4">
+            With custom cards, designed for your need.
+          </p>
+        </motion.div>
       </div>
       <motion.div
         className="thread-with-card absolute flex flex-col items-center"
@@ -35,7 +48,7 @@ export default function FloatingCard() {
       >
         <motion.div
           initial={{ scale: 0 }}
-          animate={{ scale: 1.5 }}
+          animate={isInView ? { scale: 1.5 } : { scale: 0 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -49,7 +62,7 @@ export default function FloatingCard() {
         />
         <motion.div
           initial={{ y: -700 }}
-          animate={{ y: 0 }}
+          animate={isInView ? { y: 0 } : { y: -700 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -81,7 +94,7 @@ export default function FloatingCard() {
       >
         <motion.div
           initial={{ scale: 0 }}
-          animate={{ scale: 1.5 }}
+          animate={isInView ? { scale: 1.5 } : { scale: 0 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -95,7 +108,7 @@ export default function FloatingCard() {
         />
         <motion.div
           initial={{ y: -700 }}
-          animate={{ y: 0 }}
+          animate={isInView ? { y: 0 } : { y: -700 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -127,7 +140,7 @@ export default function FloatingCard() {
       >
         <motion.div
           initial={{ scale: 0 }}
-          animate={{ scale: 1.5 }}
+          animate={isInView ? { scale: 1.5 } : { scale: 0 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -141,7 +154,7 @@ export default function FloatingCard() {
         />
         <motion.div
           initial={{ y: -700 }}
-          animate={{ y: 0 }}
+          animate={isInView ? { y: 0 } : { y: -700 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -173,7 +186,7 @@ export default function FloatingCard() {
       >
         <motion.div
           initial={{ scale: 0 }}
-          animate={{ scale: 1.5 }}
+          animate={isInView ? { scale: 1.5 } : { scale: 0 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -187,7 +200,7 @@ export default function FloatingCard() {
         />
         <motion.div
           initial={{ y: -700 }}
-          animate={{ y: 0 }}
+          animate={isInView ? { y: 0 } : { y: -700 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -219,7 +232,7 @@ export default function FloatingCard() {
       >
         <motion.div
           initial={{ scale: 0 }}
-          animate={{ scale: 1.5 }}
+          animate={isInView ? { scale: 1.5 } : { scale: 0 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -233,7 +246,7 @@ export default function FloatingCard() {
         />
         <motion.div
           initial={{ y: -700 }}
-          animate={{ y: 0 }}
+          animate={isInView ? { y: 0 } : { y: -700 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -265,7 +278,7 @@ export default function FloatingCard() {
       >
         <motion.div
           initial={{ scale: 0 }}
-          animate={{ scale: 1.5 }}
+          animate={isInView ? { scale: 1.5 } : { scale: 0 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -279,7 +292,7 @@ export default function FloatingCard() {
         />
         <motion.div
           initial={{ y: -700 }}
-          animate={{ y: 0 }}
+          animate={isInView ? { y: 0 } : { y: -700 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -311,7 +324,7 @@ export default function FloatingCard() {
       >
         <motion.div
           initial={{ scale: 0 }}
-          animate={{ scale: 1.5 }}
+          animate={isInView ? { scale: 1.5 } : { scale: 0 }}
           transition={{
             type: "spring",
             stiffness: 120,
@@ -325,7 +338,7 @@ export default function FloatingCard() {
         />
         <motion.div
           initial={{ y: -700 }}
-          animate={{ y: 0 }}
+          animate={isInView ? { y: 0 } : { y: -700 }}
           transition={{
             type: "spring",
             stiffness: 120,
