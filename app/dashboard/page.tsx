@@ -1,4 +1,5 @@
 "use client";
+import AngleSelector from "@/components/AngleSelector";
 import ColorPicker from "@/components/ColorPicker";
 import EasingCurve from "@/components/EasingCurve";
 import { Input } from "@/components/ui/input";
@@ -14,7 +15,11 @@ export default function Home() {
   const [qrBgColor, setQrBgColor] = useState("hsl(0, 0%, 100%)");
   const [qrFgColor, setQrFgColor] = useState("hsl(9, 0%, 0%)");
 
-  const [points, setPoints] = useState<number[]>([0,10,20,30,40,50,60,70,80,100]);
+  const [angle, setAngle] = useState(0);
+
+  const [points, setPoints] = useState<number[]>([
+    0, 10, 20, 30, 40, 50, 60, 70, 80, 100,
+  ]);
 
   const colors = useMemo(() => {
     const steps = 10;
@@ -43,7 +48,9 @@ export default function Home() {
       );
     }
 
-    return colors.map((ele, i) => ele+` ${points[i]?.toFixed?.(0) || i*10}%`).join(",");
+    return colors
+      .map((ele, i) => ele + ` ${points[i]?.toFixed?.(0) || i * 10}%`)
+      .join(",");
   }, [bgColor1, bgColor2, points]);
 
   // Helper function to parse HSL string into [hue, saturation, lightness]
@@ -65,10 +72,10 @@ export default function Home() {
           className="w-full sticky top-10 border px-7 pt-7 border-[inset] max-w-[270px] min-h-[420px] rounded-lg shadow"
           style={{
             backgroundImage: `linear-gradient(
-    45deg,
-    ${colors}
-  )
-`,
+                              ${angle}deg,
+                              ${colors}
+                              )
+                              `,
           }}
         >
           <div className="rounded-lg overflow-hidden">
@@ -116,9 +123,15 @@ export default function Home() {
             <ColorPicker color={bgColor2} setColor={setBgColor2} />
           </div>
         </section>
-        <section className="py-2">
-          <p className="pb-2">Curve:</p>
-          <EasingCurve setPoints={setPoints} />
+        <section className="py-2 flex justify-between">
+          <div>
+            <p className="pb-2">Curve:</p>
+            <EasingCurve setPoints={setPoints} />
+          </div>
+          <div>
+            <p className="pb-2">Angle:</p>
+            <AngleSelector angle={angle} setAngle={setAngle} />
+          </div>
         </section>
       </section>
     </main>

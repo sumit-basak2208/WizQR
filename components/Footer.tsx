@@ -1,4 +1,4 @@
-import { GithubIcon, Linkedin, LinkedinIcon } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
