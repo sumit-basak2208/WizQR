@@ -45,7 +45,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       message: "Login successfull!",
     });
-  } catch (err: any) {
+  } catch (error: unknown) {
+    const err = error as Error;
     console.log(err);
     return NextResponse.json(
       {
