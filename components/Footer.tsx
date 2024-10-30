@@ -12,8 +12,15 @@ export default function Footer() {
         WizQR
       </Link>
       <div className="flex gap-4">
-        <GithubIcon />
-        <LinkedinIcon />
+        <a href="https://github.com/sumit-basak2208/WizQR" target="_blank">
+          <GithubIcon />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/sumit-basak-78a7b925a/"
+          target="_blank"
+        >
+          <LinkedinIcon />
+        </a>
       </div>
     </footer>
   );
