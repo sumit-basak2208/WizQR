@@ -2,10 +2,12 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import "./FloatingCard.css";
 
 export default function FloatingCard() {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true });
+
   return (
     <div className="relative min-w-[1024px] h-screen">
       {/* Each thread and card pair */}
@@ -32,10 +34,19 @@ export default function FloatingCard() {
         >
           <div ref={cardRef} className="text-white text-9xl font-bold ml-20">
             Elevate your{" "}
-            <TypeAnimation
-              sequence={["business.", 1000, "career.", 1000, "website.", 1000]}
-              repeat={Infinity}
-            ></TypeAnimation>
+            <span className="animated-gradient">
+              <TypeAnimation
+                sequence={[
+                  "business.",
+                  1000,
+                  "career.",
+                  1000,
+                  "website.",
+                  1000,
+                ]}
+                repeat={Infinity}
+              ></TypeAnimation>
+            </span>
           </div>
           <p className="text-white text-3xl font-bold ml-20 mt-4">
             With custom cards, designed for your need.
