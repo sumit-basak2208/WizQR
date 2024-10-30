@@ -10,6 +10,7 @@ export default function DashboardTemplate({
     <>
       <Navbar/>
       <div className="">{children}</div>
+      <Footer/>
     </>
   );
 }

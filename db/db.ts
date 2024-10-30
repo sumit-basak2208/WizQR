@@ -12,7 +12,8 @@ export default async function connnect() {
     connection.on("error", (err: Error) => {
       console.log(`Error connecting DB: ${err.message}`);
     });
-  } catch (err: any) {
+  } catch (error: unknown) {
+    const err = error as Error;
     console.log(`Error connecting DB: ${err.message}`);
   }
 }

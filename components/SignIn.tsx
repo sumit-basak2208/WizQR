@@ -32,7 +32,8 @@ export default function SignIn() {
       toast.success("Login successfull!");
       router.refresh();
       router.push("/dashboard");
-    } catch (err: any) {
+    } catch (error: unknown) {
+      const err = error as Error;
       console.log(err);
       toast.error(err.message || "Something went wrong!");
     }
@@ -54,7 +55,8 @@ export default function SignIn() {
       }
       toast.success("Registration successfull!");
       setIsLogIn(true);
-    } catch (err: any) {
+    } catch (error: unknown) {
+      const err = error as Error;
       console.log(err);
       toast.error(err.message || "Something went wrong!");
     }

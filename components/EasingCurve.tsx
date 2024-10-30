@@ -1,14 +1,25 @@
 "uuse client";
 
 import { RefreshCw } from "lucide-react";
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React, {
+  useState,
+  useCallback,
+  useRef,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from "react";
 
 interface Point {
   x: number;
   y: number;
 }
 
-export default function EasingCurve({ setPoints }: { setPoints: Function }) {
+export default function EasingCurve({
+  setPoints,
+}: {
+  setPoints: Dispatch<SetStateAction<number[]>>;
+}) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [controlPoints, setControlPoints] = useState<{ p1: Point; p2: Point }>({
     p1: { x: 50, y: 150 }, // Control point 1
@@ -19,10 +30,7 @@ export default function EasingCurve({ setPoints }: { setPoints: Function }) {
   const height = 200;
 
   const handleDrag = useCallback(
-    (
-      point: "p1" | "p2",
-      e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
+    (point: "p1" | "p2", e: MouseEvent) => {
       const svgElement = svgRef.current;
       if (!svgElement) return;
 
@@ -79,7 +87,7 @@ export default function EasingCurve({ setPoints }: { setPoints: Function }) {
     <div className="relative group w-fit">
       <button className="absolute group-hover:block hidden left-2 top-2">
         <RefreshCw
-          onClick={(ev) =>
+          onClick={() =>
             setControlPoints({
               p1: { x: 50, y: 150 },
               p2: { x: 150, y: 50 },
@@ -134,7 +142,7 @@ export default function EasingCurve({ setPoints }: { setPoints: Function }) {
         }}
         onMouseDown={(e) => {
           e.preventDefault();
-          const onMouseMove = (ev: MouseEvent) => handleDrag("p1", ev as any);
+          const onMouseMove = (ev: MouseEvent) => handleDrag("p1", ev);
           const onMouseUp = () => {
             globalThis.removeEventListener("mousemove", onMouseMove);
             globalThis.removeEventListener("mouseup", onMouseUp);
@@ -152,7 +160,7 @@ export default function EasingCurve({ setPoints }: { setPoints: Function }) {
         }}
         onMouseDown={(e) => {
           e.preventDefault();
-          const onMouseMove = (ev: MouseEvent) => handleDrag("p2", ev as any);
+          const onMouseMove = (ev: MouseEvent) => handleDrag("p2", ev);
           const onMouseUp = () => {
             globalThis.removeEventListener("mousemove", onMouseMove);
             globalThis.removeEventListener("mouseup", onMouseUp);
