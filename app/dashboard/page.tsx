@@ -4,8 +4,10 @@ import ColorPicker from "@/components/ColorPicker";
 import EasingCurve from "@/components/EasingCurve";
 import PositionSelector from "@/components/PositionSelector";
 import { Input } from "@/components/ui/input";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
+import downloadjs from "downloadjs";
+import html2canvas from "html2canvas";
 
 export default function Home() {
   const [bgColor1, setBgColor1] = useState("hsl(350, 73%, 44%)");
@@ -26,6 +28,8 @@ export default function Home() {
   const [points, setPoints] = useState<number[]>([
     0, 10, 20, 30, 40, 50, 60, 70, 80, 100,
   ]);
+
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const colors = useMemo(() => {
     const steps = 10;
@@ -77,11 +81,19 @@ export default function Home() {
     [gradientType, angle, x, y, colors]
   );
 
+  const handleCaptureClick = useCallback(async () => {
+    if (!cardRef.current) return;
+    const canvas = await html2canvas(cardRef.current);
+    const dataURL = canvas.toDataURL("image/png");
+    downloadjs(dataURL, "download.png", "image/png");
+  }, []);
+
   return (
     <main className="grid grid-cols-2 gap-4 h-full">
       <section className="flex justify-center items-start h-full">
         <div
-          className="w-full sticky top-[70px] border-4 border-black px-7 pt-7 max-w-[270px] min-h-[420px] rounded-lg shadow"
+          ref={cardRef}
+          className="w-full sticky top-[70px] border-4 border-black px-7 pt-7 max-w-[270px] min-h-[420px] shadow"
           style={{
             backgroundImage: gradient,
           }}
@@ -180,6 +192,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <button onClick={() => handleCaptureClick()}>Download</button>
       </section>
     </main>
   );
