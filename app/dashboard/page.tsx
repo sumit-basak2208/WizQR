@@ -2,6 +2,7 @@
 import AngleSelector from "@/components/AngleSelector";
 import ColorPicker from "@/components/ColorPicker";
 import EasingCurve from "@/components/EasingCurve";
+import PositionSelector from "@/components/PositionSelector";
 import { Input } from "@/components/ui/input";
 import { useEffect, useMemo, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
@@ -16,6 +17,11 @@ export default function Home() {
   const [qrFgColor, setQrFgColor] = useState("hsl(9, 0%, 0%)");
 
   const [angle, setAngle] = useState(0);
+
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+
+  const [gradientType, setGradientType] = useState("radial");
 
   const [points, setPoints] = useState<number[]>([
     0, 10, 20, 30, 40, 50, 60, 70, 80, 100,
@@ -61,21 +67,23 @@ export default function Home() {
     return [hue, saturation, lightness];
   }
 
-  useEffect(() => {
-    console.log(colors);
-  }, [colors]);
+  const gradient = useMemo(
+    () =>
+      `${gradientType === "linear" ? "linear-gradient" : "radial-gradient"}(${
+        gradientType === "linear"
+          ? angle + "deg"
+          : "circle at " + x + "% " + y + "%"
+      },${colors})`,
+    [gradientType, angle, x, y, colors]
+  );
 
   return (
     <main className="grid grid-cols-2 gap-4 h-full">
-      <section className="flex relative justify-center items-center h-full">
+      <section className="flex justify-center items-start h-full">
         <div
-          className="w-full sticky top-10 border px-7 pt-7 border-[inset] max-w-[270px] min-h-[420px] rounded-lg shadow"
+          className="w-full sticky top-[70px] border-4 border-black px-7 pt-7 max-w-[270px] min-h-[420px] rounded-lg shadow"
           style={{
-            backgroundImage: `linear-gradient(
-                              ${angle}deg,
-                              ${colors}
-                              )
-                              `,
+            backgroundImage: gradient,
           }}
         >
           <div className="rounded-lg overflow-hidden">
@@ -117,20 +125,59 @@ export default function Home() {
         </section>
         <section className="py-2">
           <h2 className="text-lg pb-3 font-bold">Gradient</h2>
-          <p className="pb-2">Colors:</p>
-          <div className="flex gap-6">
-            <ColorPicker color={bgColor1} setColor={setBgColor1} />
-            <ColorPicker color={bgColor2} setColor={setBgColor2} />
+          <div className="py-3">
+            <p className="pb-2">Type:</p>
+            <div className="grid grid-cols-2 gap-6">
+              <button
+                onClick={() => setGradientType("linear")}
+                className={`${
+                  gradientType === "linear" ? "bg-black text-white" : ""
+                } transition-all px-4 py-1 border text-xl font-semibold rounded`}
+              >
+                Linear
+              </button>
+              <button
+                onClick={() => setGradientType("radial")}
+                className={`${
+                  gradientType === "radial" ? "bg-black text-white" : ""
+                } transition-all px-4 py-1 border text-xl font-semibold rounded`}
+              >
+                Radical
+              </button>
+            </div>
           </div>
-        </section>
-        <section className="py-2 flex justify-between">
-          <div>
-            <p className="pb-2">Curve:</p>
-            <EasingCurve setPoints={setPoints} />
+          <div className="py-3 grid grid-cols-2 gap-6">
+            <div>
+              <p className="pb-2">Colors:</p>
+              <div className="flex gap-6">
+                <ColorPicker color={bgColor1} setColor={setBgColor1} />
+                <ColorPicker color={bgColor2} setColor={setBgColor2} />
+              </div>
+            </div>
+            <div>
+              {gradientType == "radial" && (
+                <>
+                  <p className="pb-2">Position:</p>
+                  <div className="flex gap-6">
+                    <PositionSelector {...{ setX, setY, y, x }} />
+                  </div>
+                </>
+              )}
+            </div>
           </div>
-          <div>
-            <p className="pb-2">Angle:</p>
-            <AngleSelector angle={angle} setAngle={setAngle} />
+          <div className="py-3 grid grid-cols-2 gap-6">
+            <div>
+              <p className="pb-2">Curve:</p>
+              <EasingCurve setPoints={setPoints} />
+            </div>
+            <div>
+              {gradientType == "linear" && (
+                <>
+                  <p className="pb-2">Angle:</p>
+                  <AngleSelector angle={angle} setAngle={setAngle} />
+                </>
+              )}
+            </div>
           </div>
         </section>
       </section>
