@@ -1,0 +1,20 @@
+import mongoose from "mongoose";
+
+const cardSchema = new mongoose.Schema({
+  url: String,
+  gradientType: {
+    type: String,
+    enum: ["linear", "radial"],
+  },
+  position: [Number],
+  backgroundColors: [String],
+  QRColors: [String],
+  points: [Number],
+  urlCode: {
+    type: String,
+    unique: true,
+  },
+});
+
+const Cards = mongoose.models.cards || mongoose.model("cards", cardSchema);
+export default Cards;
