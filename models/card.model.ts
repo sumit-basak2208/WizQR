@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const cardSchema = new mongoose.Schema({
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+  },
   url: String,
   gradientType: {
     type: String,
