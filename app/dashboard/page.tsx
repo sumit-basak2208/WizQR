@@ -17,8 +17,247 @@ export default function Home() {
           </button>
         </div>
       </nav>
-      <div className="grid grid-cols-5 gap-6">
-        <div className="w-full"></div>
+      <div className="grid grid-cols-5 gap-6 my-5">
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="w-40 h-60 bg-black"></div>
+        </div>
       </div>
     </main>
   );
