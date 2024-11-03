@@ -57,10 +57,10 @@ export default function Home() {
         )}%)`
       );
     }
-
-    return colors
-      .map((ele, i) => ele + ` ${points[i]?.toFixed?.(0) || i * 10}%`)
-      .join(",");
+    return colors.join(",");
+    // return colors
+    //   .map((ele, i) => ele + ` ${points[i]?.toFixed?.(0) || i * 10}%`)
+    //   .join(",");
   }, [bgColor1, bgColor2, points]);
 
   // Helper function to parse HSL string into [hue, saturation, lightness]
