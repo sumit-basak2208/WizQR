@@ -5,8 +5,9 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams;
-    const page = searchParams.get("page");
-    console.log(page);
+    let page: number = Number(searchParams.get("page"));
+      if (!page) page = 1;
+    
     return NextResponse.json(
       {
         error: "Something went wrong, please try again later!",
