@@ -9,16 +9,7 @@ import { QRCode } from "react-qrcode-logo";
 import downloadjs from "downloadjs";
 import html2canvas from "html2canvas";
 
-async function getCardDetails() {
-  try {
-    const res = await fetch("")
-  } catch (error: unknown) {
-    const err = error as Error;
-    console.log(err.message);
-  }
-}
-
-export default function CardId() {
+export default function CardCreate() {
   const [bgColor1, setBgColor1] = useState("hsl(350, 73%, 44%)");
   const [bgColor2, setBgColor2] = useState("hsl(274, 65%, 12%)");
 
@@ -96,6 +87,15 @@ export default function CardId() {
     const dataURL = canvas.toDataURL("image/png");
     downloadjs(dataURL, "download.png", "image/png");
   }, []);
+
+  const createCard = async () => {
+    try {
+      const res = await fetch("");
+    } catch (error: unknown) {
+      const err = error as Error;
+      console.log(err.message);
+    }
+  };
 
   return (
     <main className="grid grid-cols-2 gap-4 h-full max-w-6xl mx-auto">
