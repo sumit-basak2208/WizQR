@@ -98,110 +98,119 @@ export default function CardCreate() {
   };
 
   return (
-    <main className="grid grid-cols-2 gap-4 h-full max-w-6xl mx-auto">
-      <section className="flex justify-center items-start h-full">
-        <div
-          ref={cardRef}
-          className="w-full sticky top-[70px] border-4 border-black px-7 pt-7 max-w-[270px] min-h-[420px] shadow"
-          style={{
-            backgroundImage: gradient,
-          }}
-        >
-          <div className="rounded-lg overflow-hidden">
-            <QRCode
-              value={qrValue}
-              eyeRadius={10}
-              qrStyle="fluid"
-              bgColor={qrBgColor}
-              fgColor={qrFgColor}
-            />
+    <>
+      <main className="grid grid-cols-12 gap-4 h-full max-w-6xl mx-auto">
+        <section className="col-span-6 flex justify-center items-start h-full">
+          <div
+            ref={cardRef}
+            className="w-full sticky top-[70px] border-4 border-black px-7 pt-7 max-w-[270px] min-h-[420px] shadow"
+            style={{
+              backgroundImage: gradient,
+            }}
+          >
+            <div className="rounded-lg overflow-hidden">
+              <QRCode
+                value={qrValue}
+                eyeRadius={10}
+                qrStyle="fluid"
+                bgColor={qrBgColor}
+                fgColor={qrFgColor}
+              />
+            </div>
+          </div>
+        </section>
+        <section className="col-span-6">
+          <section className="py-2">
+            <h2 className="text-lg pb-1 font-bold">QR Code</h2>
+            <div className="py-2">
+              <p className="pb-2">Business URL:</p>
+              <Input
+                type="link"
+                placeholder="https://www.example.com"
+                value={qrValue}
+                onChange={(ev) => setQrValue(ev.target.value)}
+              />
+            </div>
+            <div className="py-2">
+              <p className="pb-2 font-semibold">QR code colors:</p>
+              <div className="flex gap-12 ml-3">
+                <div>
+                  <p className="pb-2">Foreground color</p>
+                  <ColorPicker color={qrBgColor} setColor={setQrBgColor} />
+                </div>
+                <div>
+                  <p className="pb-2">Background color</p>
+                  <ColorPicker color={qrFgColor} setColor={setQrFgColor} />
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="py-2">
+            <h2 className="text-lg pb-3 font-bold">Gradient</h2>
+            <div className="py-3">
+              <p className="pb-2">Type:</p>
+              <div className="grid grid-cols-2 gap-6">
+                <button
+                  onClick={() => setGradientType("linear")}
+                  className={`${
+                    gradientType === "linear" ? "bg-black text-white" : ""
+                  } transition-all px-4 py-1 border text-xl font-semibold rounded`}
+                >
+                  Linear
+                </button>
+                <button
+                  onClick={() => setGradientType("radial")}
+                  className={`${
+                    gradientType === "radial" ? "bg-black text-white" : ""
+                  } transition-all px-4 py-1 border text-xl font-semibold rounded`}
+                >
+                  Radical
+                </button>
+              </div>
+            </div>
+            <div className="py-3 grid grid-cols-2 gap-6">
+              <div>
+                <p className="pb-2">Colors:</p>
+                <div className="flex gap-6">
+                  <ColorPicker color={bgColor1} setColor={setBgColor1} />
+                  <ColorPicker color={bgColor2} setColor={setBgColor2} />
+                </div>
+              </div>
+              <div>
+                {gradientType == "radial" && (
+                  <>
+                    <p className="pb-2">Position:</p>
+                    <div className="flex gap-6">
+                      <PositionSelector {...{ setX, setY, y, x }} />
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="py-3 grid grid-cols-2 gap-6">
+              <div>
+                <p className="pb-2">Curve:</p>
+                <EasingCurve setPoints={setPoints} />
+              </div>
+              <div>
+                {gradientType == "linear" && (
+                  <>
+                    <p className="pb-2">Angle:</p>
+                    <AngleSelector angle={angle} setAngle={setAngle} />
+                  </>
+                )}
+              </div>
+            </div>
+          </section>
+        </section>
+        <div className="sticky bottom-[60px] mt-10 col-span-12">
+          <div className="mx-auto w-fit border-4 p-7 rounded-lg border-black bg-white">
+            <button className="border-2 border-black w-96 px-4 z-30 py-2 bg-white-400 rounded-md text-black hover:text-white relative after:-z-20 after:absolute after:h-1 after:w-1 after:bg-black after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 font-bold text-3xl">
+              Save
+            </button>
           </div>
         </div>
-      </section>
-      <section>
-        <section className="py-2">
-          <h2 className="text-lg pb-1 font-bold">QR Code</h2>
-          <div className="py-2">
-            <p className="pb-2">Business URL:</p>
-            <Input
-              type="link"
-              placeholder="https://www.example.com"
-              value={qrValue}
-              onChange={(ev) => setQrValue(ev.target.value)}
-            />
-          </div>
-          <div className="py-2">
-            <p className="pb-2 font-semibold">QR code colors:</p>
-            <div className="flex gap-12 ml-3">
-              <div>
-                <p className="pb-2">Foreground color</p>
-                <ColorPicker color={qrBgColor} setColor={setQrBgColor} />
-              </div>
-              <div>
-                <p className="pb-2">Background color</p>
-                <ColorPicker color={qrFgColor} setColor={setQrFgColor} />
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="py-2">
-          <h2 className="text-lg pb-3 font-bold">Gradient</h2>
-          <div className="py-3">
-            <p className="pb-2">Type:</p>
-            <div className="grid grid-cols-2 gap-6">
-              <button
-                onClick={() => setGradientType("linear")}
-                className={`${
-                  gradientType === "linear" ? "bg-black text-white" : ""
-                } transition-all px-4 py-1 border text-xl font-semibold rounded`}
-              >
-                Linear
-              </button>
-              <button
-                onClick={() => setGradientType("radial")}
-                className={`${
-                  gradientType === "radial" ? "bg-black text-white" : ""
-                } transition-all px-4 py-1 border text-xl font-semibold rounded`}
-              >
-                Radical
-              </button>
-            </div>
-          </div>
-          <div className="py-3 grid grid-cols-2 gap-6">
-            <div>
-              <p className="pb-2">Colors:</p>
-              <div className="flex gap-6">
-                <ColorPicker color={bgColor1} setColor={setBgColor1} />
-                <ColorPicker color={bgColor2} setColor={setBgColor2} />
-              </div>
-            </div>
-            <div>
-              {gradientType == "radial" && (
-                <>
-                  <p className="pb-2">Position:</p>
-                  <div className="flex gap-6">
-                    <PositionSelector {...{ setX, setY, y, x }} />
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-          <div className="py-3 grid grid-cols-2 gap-6">
-            <div>
-              <p className="pb-2">Curve:</p>
-              <EasingCurve setPoints={setPoints} />
-            </div>
-            <div>
-              {gradientType == "linear" && (
-                <>
-                  <p className="pb-2">Angle:</p>
-                  <AngleSelector angle={angle} setAngle={setAngle} />
-                </>
-              )}
-            </div>
-          </div>
-        </section>
-      </section>
-    </main>
+      </main>
+    </>
   );
 }
