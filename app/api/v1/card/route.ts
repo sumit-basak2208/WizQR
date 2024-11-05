@@ -1,5 +1,6 @@
 import Cards from "@/models/card.model";
 import { getTokenData } from "@/utils/token";
+import { getUserId } from "@/utils/utility";
 import { cookies } from "next/headers";
 import { useSearchParams } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
@@ -8,18 +9,8 @@ export async function GET(req: NextRequest) {
   try {
     // Check if user is authorized
     const tokenCookie = cookies().get("token");
-    if (!tokenCookie)
-      return NextResponse.json(
-        {
-          error: "Unauthorized!",
-        },
-        {
-          status: 401,
-        }
-      );
-    const dt = getTokenData(tokenCookie.value);
-    const data = dt as { userId: string } | boolean;
-    if (!data || typeof data != "object")
+    const userId = getUserId(tokenCookie);
+    if (!userId)
       return NextResponse.json(
         {
           error: "Unauthorized!",
@@ -34,7 +25,7 @@ export async function GET(req: NextRequest) {
     if (!page) page = 1;
 
     // fetch cards
-    const cards = await Cards.find({ owner: data.userId })
+    const cards = await Cards.find({ owner: userId })
       .skip(page - 1 * 10)
       .limit(10);
 
@@ -59,6 +50,46 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
+    // Check if user is authorized
+    const tokenCookie = cookies().get("token");
+    const userId = getUserId(tokenCookie);
+    if (!userId)
+      return NextResponse.json(
+        {
+          error: "Unauthorized!",
+        },
+        {
+          status: 401,
+        }
+      );
+    const {
+      url,
+      gradientType,
+      position,
+      backgroundColors,
+      QRColors,
+      points,
+      urlCode,
+    } = await req.json();
+
+    const newCard = new Cards({
+      url,
+      gradientType,
+      position,
+      backgroundColors,
+      QRColors,
+      points,
+      urlCode,
+      owner: userId,
+    });
+
+    const savedCard = await newCard.save();
+
+    return NextResponse.json({
+      message: "Card created ssuccessfully",
+      card: savedCard,
+      status: 200,
+    });
   } catch (error: unknown) {
     const err = error as Error;
     console.log(err);
