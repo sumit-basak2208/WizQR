@@ -25,13 +25,16 @@ export async function GET(req: NextRequest) {
     if (!page) page = 1;
 
     // fetch cards
+    const totalCards = await Cards.countDocuments({ owner: userId });
     const cards = await Cards.find({ owner: userId })
-      .skip(page - 1 * 10)
+      .sort({ updatedAt: -1 })
+      .skip((page - 1) * 10)
       .limit(10);
 
     return NextResponse.json({
       message: "Cards fetched ssuccessfully",
       cards,
+      totalPage: Math.ceil(totalCards / 10),
       status: 200,
     });
   } catch (error: unknown) {
