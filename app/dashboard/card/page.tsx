@@ -203,9 +203,9 @@ export default function CardCreate() {
             </div>
           </section>
         </section>
-        <div className="sticky bottom-[60px] mt-10 col-span-12">
-          <div className="mx-auto w-fit border-4 p-7 rounded-lg border-black bg-white">
-            <button className="border-2 border-black w-96 px-4 z-30 py-2 bg-white-400 rounded-md text-black hover:text-white relative after:-z-20 after:absolute after:h-1 after:w-1 after:bg-black after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 font-bold text-3xl">
+        <div className="sticky bottom-[55px] mt-10 col-span-12">
+          <div className="mx-auto w-fit shadow-lg p-7 rounded-lg bg-white">
+            <button className="border-2 border-black w-96 px-4 z-30 py-2 bg-white-400 rounded-md text-black hover:text-white relative after:-z-20 after:absolute after:h-1 after:w-1 after:bg-black after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 font-semibold text-2xl">
               Save
             </button>
           </div>
