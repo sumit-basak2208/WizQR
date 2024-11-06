@@ -40,7 +40,8 @@ export async function POST(req: NextRequest) {
           userId: user._id,
         },
         process.env.JWT_TOKEN ?? ""
-      )
+      ),
+      { maxAge: 24 * 60 * 60 }
     );
     return NextResponse.json({
       message: "Login successfull!",
