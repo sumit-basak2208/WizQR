@@ -9,6 +9,7 @@ import { QRCode } from "react-qrcode-logo";
 import downloadjs from "downloadjs";
 import html2canvas from "html2canvas";
 import { getColors } from "@/utils/utility";
+import Card from "@/components/Card";
 
 export default function CardCreate() {
   const [bgColor1, setBgColor1] = useState("hsl(350, 73%, 44%)");
@@ -67,23 +68,14 @@ export default function CardCreate() {
     <>
       <main className="grid grid-cols-12 gap-4 h-full max-w-6xl mx-auto">
         <section className="col-span-6 flex justify-center items-start h-full">
-          <div
+          <Card
             ref={cardRef}
             className="w-full sticky top-[70px] border-4 border-black px-7 pt-7 max-w-[270px] min-h-[420px] shadow"
-            style={{
-              backgroundImage: gradient,
-            }}
-          >
-            <div className="rounded-lg overflow-hidden">
-              <QRCode
-                value={qrValue}
-                eyeRadius={10}
-                qrStyle="fluid"
-                bgColor={qrBgColor}
-                fgColor={qrFgColor}
-              />
-            </div>
-          </div>
+            gradient={gradient}
+            qrValue={qrValue}
+            qrBgColor={qrBgColor}
+            qrFgColor={qrFgColor}
+          />
         </section>
         <section className="col-span-6">
           <section className="py-2">
