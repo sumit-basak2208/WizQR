@@ -10,8 +10,12 @@ import downloadjs from "downloadjs";
 import html2canvas from "html2canvas";
 import { getColors } from "@/utils/utility";
 import Card from "@/components/Card";
+import toast from "react-hot-toast";
+import { Loader } from "lucide-react";
 
 export default function CardCreate() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [bgColor1, setBgColor1] = useState("hsl(350, 73%, 44%)");
   const [bgColor2, setBgColor2] = useState("hsl(274, 65%, 12%)");
 
@@ -55,18 +59,44 @@ export default function CardCreate() {
     downloadjs(dataURL, "download.png", "image/png");
   }, []);
 
-  const createCard = async () => {
+  const createCard = async (ev: React.FormEvent) => {
     try {
-      const res = await fetch("");
+      ev.preventDefault();
+      setIsLoading(true);
+      const data = {
+        url: qrValue,
+        gradientType: gradientType,
+        position: [0, 0],
+        backgroundColors: [bgColor1, bgColor2],
+        QRColors: [qrBgColor, qrFgColor],
+        points: points,
+      };
+      const res = await fetch("/api/v1/card", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      const resData = await res.json();
+      if (resData.error) {
+        toast.error(resData.error);
+        setIsLoading(false);
+        return;
+      }
+      toast.success("Card created!");
     } catch (error: unknown) {
       const err = error as Error;
-      console.log(err.message);
+      console.log(err);
+      toast.error(err.message || "Something went wrong!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <>
-      <main className="grid grid-cols-12 gap-4 h-full max-w-6xl mx-auto">
+      <form
+        onSubmit={createCard}
+        className="grid grid-cols-12 gap-4 h-full max-w-6xl mx-auto"
+      >
         <section className="col-span-6 flex justify-center items-start h-full">
           <Card
             ref={cardRef}
@@ -83,10 +113,11 @@ export default function CardCreate() {
             <div className="py-2">
               <p className="pb-2">Business URL:</p>
               <Input
-                type="link"
+                type="url"
                 placeholder="https://www.example.com"
                 value={qrValue}
                 onChange={(ev) => setQrValue(ev.target.value)}
+                required
               />
             </div>
             <div className="py-2">
@@ -163,12 +194,20 @@ export default function CardCreate() {
         </section>
         <div className="sticky bottom-[55px] mt-10 col-span-12">
           <div className="mx-auto w-fit shadow-lg p-7 rounded-lg bg-white">
-            <button className="border-2 border-black w-96 px-4 z-30 py-2 bg-white-400 rounded-md text-black hover:text-white relative after:-z-20 after:absolute after:h-1 after:w-1 after:bg-black after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 font-semibold text-2xl">
-              Save
+            <button
+              disabled={isLoading}
+              type="submit"
+              className="border-2 border-black w-96 px-4 z-30 py-2 bg-white-400 rounded-md text-black hover:text-white after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 disabled:text-white after:disabled:scale-[300] after:disabled:transition-all after:disabled:duration-700 relative after:-z-20 after:absolute after:h-1 after:w-1 after:bg-black after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:transition-all after:duration-700 transition-all duration-700 font-semibold text-2xl"
+            >
+              {isLoading ? (
+                <Loader className="animate-spin mx-auto my-0.5" strokeWidth={2.5} />
+              ) : (
+                "Save"
+              )}
             </button>
           </div>
         </div>
-      </main>
+      </form>
     </>
   );
 }
