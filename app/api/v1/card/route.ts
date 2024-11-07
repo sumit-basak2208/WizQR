@@ -4,6 +4,7 @@ import { getUserId } from "@/utils/utility";
 import { cookies } from "next/headers";
 import { useSearchParams } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
+import randomstring from "randomstring";
 
 export async function GET(req: NextRequest) {
   try {
@@ -72,7 +73,6 @@ export async function POST(req: NextRequest) {
       backgroundColors,
       QRColors,
       points,
-      urlCode,
     } = await req.json();
 
     const newCard = new Cards({
@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
       backgroundColors,
       QRColors,
       points,
-      urlCode,
+      urlCode: randomstring.generate(10),
       owner: userId,
     });
 
