@@ -35,7 +35,7 @@ export default function AngleSelector({
       ref={circleRef}
       onMouseDown={startDragging}
       className="relative w-[200px] h-[200px] rounded-full bg-gray-900 flex items-center justify-center"
-      // className="relative w-[200px] h-[200px] rounded-full bg-gray-900 flex items-center justify-center"
+      className="relative w-[200px] h-[200px] rounded-full bg-gray-900 flex items-center justify-center"
     >
       <div
         style={{ transform: `rotate(${angle}deg)` }}
