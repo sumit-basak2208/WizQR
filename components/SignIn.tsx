@@ -78,7 +78,7 @@ export default function SignIn() {
               <input
                 onChange={(ev) => setUsername(ev.target.value)}
                 value={username}
-                name="username"
+                name="user name"
                 className="max-w-full w-80 block p-2 rounded-sm border"
                 placeholder="Username or email"
                 required

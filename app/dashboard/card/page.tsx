@@ -11,7 +11,7 @@ import html2canvas from "html2canvas";
 import { getColors } from "@/utils/utility";
 import Card from "@/components/Card";
 import toast from "react-hot-toast";
-import { Loader } from "lucide-react";
+import { Loader, Save } from "lucide-react";
 
 export default function CardCreate() {
   const [isLoading, setIsLoading] = useState(false);
@@ -140,6 +140,7 @@ export default function CardCreate() {
               <p className="pb-2">Type:</p>
               <div className="grid grid-cols-2 gap-6">
                 <button
+                  type="button"
                   onClick={() => setGradientType("linear")}
                   className={`${
                     gradientType === "linear" ? "bg-black text-white" : ""
@@ -148,6 +149,7 @@ export default function CardCreate() {
                   Linear
                 </button>
                 <button
+                  type="button"
                   onClick={() => setGradientType("radial")}
                   className={`${
                     gradientType === "radial" ? "bg-black text-white" : ""
@@ -192,17 +194,23 @@ export default function CardCreate() {
             </div>
           </section>
         </section>
-        <div className="sticky bottom-[55px] mt-10 col-span-12">
-          <div className="mx-auto w-fit shadow-lg p-7 rounded-lg bg-white">
+        <div className="fixed top-[55px] right-10 mt-10 col-span-12">
+          <div className="w-fit rounded-lg">
             <button
               disabled={isLoading}
               type="submit"
-              className="border-2 border-black w-96 px-4 z-30 py-2 bg-white-400 rounded-md text-black hover:text-white after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 disabled:text-white after:disabled:scale-[300] after:disabled:transition-all after:disabled:duration-700 relative after:-z-20 after:absolute after:h-1 after:w-1 after:bg-black after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:transition-all after:duration-700 transition-all duration-700 font-semibold text-2xl"
+              className="flex flex-col items-center bg-white border-2 border-black px-4 z-30 py-1 bg-white-400 rounded-md text-black hover:text-white after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 disabled:text-white after:disabled:scale-[300] after:disabled:transition-all after:disabled:duration-700 relative after:-z-20 after:absolute after:h-1 after:w-1 after:bg-black after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:transition-all after:duration-700 transition-all duration-700 font-semibold"
             >
               {isLoading ? (
-                <Loader className="animate-spin mx-auto my-0.5" strokeWidth={2.5} />
+                <Loader
+                  className="animate-spin mx-auto my-0.5"
+                  strokeWidth={2.5}
+                />
               ) : (
-                "Save"
+                <>
+                  <Save />
+                  Save
+                </>
               )}
             </button>
           </div>
