@@ -53,3 +53,19 @@ export function getColors(
     .map((ele, i) => ele + ` ${points[i]?.toFixed?.(0) || i * 10}%`)
     .join(",");
 }
+
+export function getGradient(
+  gradientType: string,
+  angle: number,
+  x: number,
+  y: number,
+  colors: string
+) {
+  return `${
+    gradientType === "linear" ? "linear-gradient" : "radial-gradient"
+  }(${
+    gradientType === "linear"
+      ? angle + "deg"
+      : "circle at " + x + "% " + y + "%"
+  },${colors})`;
+}
