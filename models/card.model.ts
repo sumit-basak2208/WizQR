@@ -11,6 +11,8 @@ const cardSchema = new mongoose.Schema(
       type: String,
       enum: ["linear", "radial"],
     },
+    angle: Number,
+    // x,y points
     position: [Number],
     backgroundColors: [String],
     QRColors: [String],

@@ -1,3 +1,4 @@
+import connnect from "@/db/db";
 import Cards from "@/models/card.model";
 import { getTokenData } from "@/utils/token";
 import { getUserId } from "@/utils/utility";
@@ -5,6 +6,8 @@ import { cookies } from "next/headers";
 import { useSearchParams } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
 import randomstring from "randomstring";
+
+connnect();
 
 export async function GET(req: NextRequest) {
   try {
@@ -72,6 +75,7 @@ export async function POST(req: NextRequest) {
       position,
       backgroundColors,
       QRColors,
+      angle,
       points,
     } = await req.json();
 
@@ -82,6 +86,7 @@ export async function POST(req: NextRequest) {
       backgroundColors,
       QRColors,
       points,
+      angle,
       urlCode: randomstring.generate(10),
       owner: userId,
     });

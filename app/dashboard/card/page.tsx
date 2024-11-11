@@ -8,10 +8,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import downloadjs from "downloadjs";
 import html2canvas from "html2canvas";
-import { getColors } from "@/utils/utility";
+import { getColors, getGradient } from "@/utils/utility";
 import Card from "@/components/Card";
 import toast from "react-hot-toast";
 import { Loader, Save } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function CardCreate() {
   const [isLoading, setIsLoading] = useState(false);
@@ -37,18 +38,15 @@ export default function CardCreate() {
 
   const cardRef = useRef<HTMLDivElement>(null);
 
+  const router = useRouter();
+
   const colors = useMemo(
     () => getColors(bgColor1, bgColor2, points),
     [bgColor1, bgColor2, points]
   );
 
   const gradient = useMemo(
-    () =>
-      `${gradientType === "linear" ? "linear-gradient" : "radial-gradient"}(${
-        gradientType === "linear"
-          ? angle + "deg"
-          : "circle at " + x + "% " + y + "%"
-      },${colors})`,
+    () => getGradient(gradientType, angle, x, y, colors),
     [gradientType, angle, x, y, colors]
   );
 
@@ -67,6 +65,7 @@ export default function CardCreate() {
         url: qrValue,
         gradientType: gradientType,
         position: [0, 0],
+        angle: angle,
         backgroundColors: [bgColor1, bgColor2],
         QRColors: [qrBgColor, qrFgColor],
         points: points,
@@ -82,6 +81,7 @@ export default function CardCreate() {
         return;
       }
       toast.success("Card created!");
+      router.push("/dashboard");
     } catch (error: unknown) {
       const err = error as Error;
       console.log(err);
