@@ -9,17 +9,21 @@ interface CardProps {
   qrBgColor: string;
   qrFgColor: string;
   className: string;
+  style?: object;
+  id?: string;
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { gradient, qrValue, qrBgColor, qrFgColor, className },
+  { gradient, qrValue, qrBgColor, qrFgColor, className, style = {}, id = "" },
   cardRef
 ) {
   return (
     <div
+      id={id}
       className={className}
       ref={cardRef || undefined}
       style={{
+        ...style,
         backgroundImage: gradient,
       }}
     >
@@ -27,7 +31,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
         <QRCode
           value={qrValue}
           eyeRadius={10}
-          qrStyle="fluid"
+          // qrStyle="fluid"
           bgColor={qrBgColor}
           fgColor={qrFgColor}
         />
