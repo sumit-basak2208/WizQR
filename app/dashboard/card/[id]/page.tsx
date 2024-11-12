@@ -4,19 +4,19 @@ import ColorPicker from "@/components/ColorPicker";
 import EasingCurve from "@/components/EasingCurve";
 import PositionSelector from "@/components/PositionSelector";
 import { Input } from "@/components/ui/input";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import downloadjs from "downloadjs";
 import html2canvas from "html2canvas";
 
-async function getCardDetails() {
-  try {
-    const res = await fetch("")
-  } catch (error: unknown) {
-    const err = error as Error;
-    console.log(err.message);
-  }
-}
+// async function getCardDetails() {
+//   try {
+//     const res = await fetch("")
+//   } catch (error: unknown) {
+//     const err = error as Error;
+//     console.log(err.message);
+//   }
+// }
 
 export default function CardId() {
   const [bgColor1, setBgColor1] = useState("hsl(350, 73%, 44%)");
@@ -90,12 +90,12 @@ export default function CardId() {
     [gradientType, angle, x, y, colors]
   );
 
-  const handleCaptureClick = useCallback(async () => {
-    if (!cardRef.current) return;
-    const canvas = await html2canvas(cardRef.current);
-    const dataURL = canvas.toDataURL("image/png");
-    downloadjs(dataURL, "download.png", "image/png");
-  }, []);
+  // const handleCaptureClick = useCallback(async () => {
+  //   if (!cardRef.current) return;
+  //   const canvas = await html2canvas(cardRef.current);
+  //   const dataURL = canvas.toDataURL("image/png");
+  //   downloadjs(dataURL, "download.png", "image/png");
+  // }, []);
 
   return (
     <main className="grid grid-cols-2 gap-4 h-full max-w-6xl mx-auto">

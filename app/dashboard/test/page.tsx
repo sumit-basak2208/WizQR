@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useSpring, useTransform } from "framer-motion";
-import Image from "next/image";
 import { MouseEventHandler } from "react";
 
 // Interaction hyperparameters
@@ -69,7 +68,7 @@ export default function Home() {
     scale.set(cardScale);
   };
 
-  const handleMouseLeave: MouseEventHandler = (e) => {
+  const handleMouseLeave: MouseEventHandler = () => {
     xPcnt.set(0);
     yPcnt.set(0);
     scale.set(1);

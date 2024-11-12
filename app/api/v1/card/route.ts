@@ -1,9 +1,7 @@
 import connnect from "@/db/db";
 import Cards from "@/models/card.model";
-import { getTokenData } from "@/utils/token";
 import { getUserId } from "@/utils/utility";
 import { cookies } from "next/headers";
-import { useSearchParams } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
 import randomstring from "randomstring";
 

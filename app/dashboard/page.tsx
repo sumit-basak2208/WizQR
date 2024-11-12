@@ -21,7 +21,9 @@ export default async function Dashboard() {
           </Link>
         </div>
       </nav>
+      <div className="mt-10">
         <DashboardCardList />
+      </div>
     </main>
   );
 }
