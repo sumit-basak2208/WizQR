@@ -99,7 +99,7 @@ export default function CardCreate() {
         <section className="col-span-6 flex justify-center items-start h-full">
           <Card
             ref={cardRef}
-            className="w-full sticky top-[70px] border-4 border-black px-7 pt-7 max-w-[270px] min-h-[420px] shadow"
+            className="w-full sticky top-[90px] border-4 border-black px-7 pt-7 max-w-[270px] min-h-[420px] shadow-lg"
             gradient={gradient}
             qrValue={qrValue}
             qrBgColor={qrBgColor}
@@ -198,7 +198,7 @@ export default function CardCreate() {
             <button
               disabled={isLoading}
               type="submit"
-              className="flex flex-col items-center bg-white border-2 border-black px-4 z-30 py-1 bg-white-400 rounded-md text-black hover:text-white after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 disabled:text-white after:disabled:scale-[300] after:disabled:transition-all after:disabled:duration-700 relative after:-z-20 after:absolute after:h-1 after:w-1 after:bg-black after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:transition-all after:duration-700 transition-all duration-700 font-semibold"
+              className="flex flex-col items-center bg-white border-2 border-black px-4 z-30 py-1 bg-white-400 rounded-md text-black hover:text-white after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 disabled:text-white after:disabled:scale-[300] after:disabled:transition-all after:disabled:duration-700 relative after:-z-20 after:absolute after:h-1 after:w-1 after:bg-black after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:transition-all after:duration-700 transition-all duration-700 font-semibold shadow"
             >
               {isLoading ? (
                 <Loader

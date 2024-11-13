@@ -3,7 +3,6 @@ import Link from "next/link";
 
 const Account = dynamic(() => import("./Account"), {
   loading: () => <></>,
-  ssr: false
 });
 
 export default function Navbar() {
