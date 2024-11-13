@@ -89,13 +89,12 @@ export default function DashboardCardList() {
         className="grid grid-cols-4 gap-x-6 gap-y-12 my-5"
       >
         {cards?.map((card) => (
-          <div className="card">
+          <div key={card._id} className="card">
             <div
               style={{ transformStyle: "preserve-3d" }}
               className="w-60 h-96 mx-auto card__content shadow-lg relative transition-transform duration-1000 rounded-sm"
             >
               <Card
-                key={card._id}
                 ref={null}
                 style={{ backfaceVisibility: "hidden" }}
                 className="card__front inset-0 mx-auto pt-4 px-4 absolute border-4 border-black"
