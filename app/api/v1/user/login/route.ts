@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
         }
       );
     }
-    cookies().set(
+    (await cookies()).set(
       "token",
       jwt.sign(
         {

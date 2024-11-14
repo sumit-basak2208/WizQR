@@ -10,7 +10,7 @@ connnect();
 export async function GET(req: NextRequest) {
   try {
     // Check if user is authorized
-    const tokenCookie = cookies().get("token");
+    const tokenCookie = (await cookies()).get("token");
     const userId = getUserId(tokenCookie);
     if (!userId)
       return NextResponse.json(
@@ -56,7 +56,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     // Check if user is authorized
-    const tokenCookie = cookies().get("token");
+    const tokenCookie = (await cookies()).get("token");
     const userId = getUserId(tokenCookie);
     if (!userId)
       return NextResponse.json(
