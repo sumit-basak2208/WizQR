@@ -1,13 +1,14 @@
 import FloatingCard from "@/components/home/FloatingCard/FloatingCard";
 import * as motion from "framer-motion/client";
 import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
       <main className="grid md:grid-cols-2 grid-cols-1 overflow-hidden">
         <div className="flex border-r-4 border-black relative items-center">
-          <div className="ml-10 mb-10">
+          <div className="ml-16 mb-10">
             <h1 className="text-3xl font-bold">
               Create Your Custom QR-Linked <br />
               Cards with WizQR
@@ -19,10 +20,13 @@ export default function Home() {
               life on a card that’s just as unique as you are.
             </p>
             <div className="w-fit bg-black rounded">
-              <button className="flex gap-4 px-4 py-2 bg-white text-xl transition-all translate-x-1 -translate-y-1 hover:-translate-y-1.5 hover:translate-x-1.5 active:!translate-x-0 active:!translate-y-0 font-bold border-2 border-black rounded mt-5">
+              <Link
+                href="/dashboard/card"
+                className="flex gap-4 px-4 py-2 bg-white text-xl transition-all translate-x-1 -translate-y-1 hover:-translate-y-1.5 hover:translate-x-1.5 active:!translate-x-0 active:!translate-y-0 font-bold border-2 border-black rounded mt-5"
+              >
                 <span>Get started</span>
                 <ArrowRightIcon strokeWidth={2.5} className="mt-1" />
-              </button>
+              </Link>
             </div>
           </div>
           <div className="w-16 h-16 absolute border-t-4 bg-white -bottom-[34px] -right-[31.5px] z-20 border-black rotate-[50deg]"></div>

@@ -1,14 +1,14 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { getTokenData } from "./utils/token";
+// import { getTokenData } from "./utils/token";
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   if (
     ["/dashboard", "/api/v1/user", "/api/v1/card"].some((ele) =>
       req.nextUrl.pathname.startsWith(ele)
     )
   ) {
-    if (cookies().has("token")) return NextResponse.next();
+    if ((await cookies()).has("token")) return NextResponse.next();
     const url = req.nextUrl.clone();
     url.pathname = "/";
     url.searchParams.set("login", "true");

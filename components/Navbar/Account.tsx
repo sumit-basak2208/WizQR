@@ -57,9 +57,9 @@ export default function Account() {
               </button>
             </PopoverTrigger>
             <PopoverContent className="p-1 w-40">
-              <Link href="/profile" className="block px-4 py-1 text-sm">
+              {/* <Link href="/profile" className="block px-4 py-1 text-sm">
                 Your Profile
-              </Link>
+              </Link> */}
               <Link href="/dashboard" className="block px-4 py-1 text-sm">
                 Dashboard
               </Link>
