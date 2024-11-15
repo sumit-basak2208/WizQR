@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 
-export async function getUrl(id: string) {
+async function getUrl(id: string) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_APP_URL}/api/v1/redirect/${id}`
   );
