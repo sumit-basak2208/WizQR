@@ -21,6 +21,10 @@ const cardSchema = new mongoose.Schema(
       type: String,
       unique: true,
     },
+    totalScans: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
