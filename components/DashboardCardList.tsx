@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card from "./Card";
 import { getColors, getGradient } from "@/utils/utility";
-import { Download, Loader, Pencil, Smile } from "lucide-react";
+import { Download, Loader, Pencil } from "lucide-react";
 import Link from "next/link";
 import html2canvas from "html2canvas";
 import downloadjs from "downloadjs";

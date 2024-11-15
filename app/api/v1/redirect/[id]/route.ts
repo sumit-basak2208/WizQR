@@ -1,7 +1,5 @@
 import connnect from "@/db/db";
 import Cards from "@/models/card.model";
-import { getUserId } from "@/utils/utility";
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 connnect();

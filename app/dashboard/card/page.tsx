@@ -4,9 +4,7 @@ import ColorPicker from "@/components/ColorPicker";
 import EasingCurve from "@/components/EasingCurve";
 import PositionSelector from "@/components/PositionSelector";
 import { Input } from "@/components/ui/input";
-import { useCallback, useMemo, useRef, useState } from "react";
-import downloadjs from "downloadjs";
-import html2canvas from "html2canvas";
+import { useMemo, useRef, useState } from "react";
 import { getColors, getGradient } from "@/utils/utility";
 import Card from "@/components/Card";
 import toast from "react-hot-toast";
@@ -48,13 +46,6 @@ export default function CardCreate() {
     () => getGradient(gradientType, angle, x, y, colors),
     [gradientType, angle, x, y, colors]
   );
-
-  const handleCaptureClick = useCallback(async () => {
-    if (!cardRef.current) return;
-    const canvas = await html2canvas(cardRef.current);
-    const dataURL = canvas.toDataURL("image/png");
-    downloadjs(dataURL, "download.png", "image/png");
-  }, []);
 
   const createCard = async (ev: React.FormEvent) => {
     try {
