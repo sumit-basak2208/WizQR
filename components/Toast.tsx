@@ -1,10 +1,10 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import toast from "react-hot-toast";
 
-export default function Toast() {
+function Toast() {
   const searchParams = useSearchParams();
   useEffect(() => {
     if (searchParams.get("login"))
@@ -13,4 +13,12 @@ export default function Toast() {
       });
   }, []);
   return <></>;
+}
+
+export default function ToastSuspense() {
+  return (
+    <Suspense>
+      <Toast />
+    </Suspense>
+  );
 }
