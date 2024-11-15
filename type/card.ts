@@ -9,4 +9,5 @@ export interface Card {
   points: number[];
   urlCode: string;
   angle: number;
+  totalScans: number;
 }

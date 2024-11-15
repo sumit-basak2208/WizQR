@@ -109,7 +109,7 @@ export default function DashboardCardList() {
                     card.points
                   )
                 )}
-                qrValue={`${globalThis.location.href}/redirect/${card.urlCode}`}
+                qrValue={`${process.env.NEXT_PUBLIC_APP_URL}/redirect/${card.urlCode}`}
                 qrBgColor={card.QRColors[0]}
                 qrFgColor={card.QRColors[1]}
               />
@@ -149,7 +149,7 @@ export default function DashboardCardList() {
                   <div className="bg-black w-[80%] rounded mx-auto shadow mt-20">
                     <div className="flex flex-col rounded-lg bg-white border-2 border-black translate-x-1 -translate-y-1 py-4 gap-1 justify-center items-center">
                       <h5 className="text-xl font-semibold">Total scans:</h5>
-                      <h4 className="text-3xl font-bold">00</h4>
+                      <h4 className="text-3xl font-bold">{card.totalScans }</h4>
                     </div>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export default function DashboardCardList() {
                       card.points
                     )
                   )}
-                  qrValue={`${globalThis.location.href}/redirect/${card.urlCode}`}
+                  qrValue={`${process.env.NEXT_PUBLIC_APP_URL}/redirect/${card.urlCode}`}
                   qrBgColor={card.QRColors[0]}
                   qrFgColor={card.QRColors[1]}
                 />
