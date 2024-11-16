@@ -57,12 +57,12 @@ export default function DashboardCardList() {
     <>
       <InfiniteScroll
         loader={
-          <div className="col-span-5 flex items-center">
+          <div className="xl:col-span-4 lg:col-span-3 md:col-span-2 col-span-1 flex items-center">
             <Loader className="animate-spin" strokeWidth={2.5} />
           </div>
         }
         endMessage={
-          <div className="col-span-5 flex items-center">
+          <div className="xl:col-span-4 lg:col-span-3 md:col-span-2 col-span-1 flex items-center">
             <div className="max-w-xl mx-auto text-center font-semibold">
               You have reached the bottom of the abyss, perhaps you may yet
               shake the stars and the abyss...
@@ -86,10 +86,10 @@ export default function DashboardCardList() {
         next={() => {
           getCards(currentPage + 1);
         }}
-        className="grid grid-cols-4 gap-x-6 gap-y-12 my-5"
+        className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-12 my-5"
       >
         {cards?.map((card) => (
-          <div key={card._id} className="card">
+          <div key={card._id} className="card col-span-1">
             <div
               style={{ transformStyle: "preserve-3d" }}
               className="w-60 h-96 mx-auto card__content shadow-lg relative transition-transform duration-1000 rounded-sm"

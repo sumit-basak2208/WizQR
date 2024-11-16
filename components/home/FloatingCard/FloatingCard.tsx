@@ -22,6 +22,7 @@ export default function FloatingCard() {
         }}
       >
         <motion.div
+          className="w-[100vw]"
           initial={{ translateX: "-100%" }}
           animate={isInView ? { translateX: 0 } : { translateX: "-100%" }}
           transition={{
@@ -32,8 +33,11 @@ export default function FloatingCard() {
             duration: 5,
           }}
         >
-          <div ref={cardRef} className="text-white text-9xl font-bold ml-20">
-            Elevate your{" "}
+          <div
+            ref={cardRef}
+            className="text-white lg:text-9xl md:text-7xl text-5xl font-bold md:ml-20 ml-0 md:text-left text-center"
+          >
+            Elevate your{" "}<br className="sm:hidden block"/>
             <span className="animated-gradient">
               <TypeAnimation
                 sequence={[
@@ -48,7 +52,7 @@ export default function FloatingCard() {
               ></TypeAnimation>
             </span>
           </div>
-          <p className="text-white text-3xl font-bold ml-20 mt-4">
+          <p className="text-white md:text-3xl text-2xl font-bold md:ml-20 ml-0 mt-4 md:text-left text-center">
             With custom cards, designed for your need.
           </p>
         </motion.div>

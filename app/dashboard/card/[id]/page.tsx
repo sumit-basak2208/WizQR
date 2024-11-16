@@ -172,7 +172,7 @@ export default function CardId() {
       ) : (
         <form
           onSubmit={saveCard}
-          className="grid grid-cols-12 gap-4 h-full max-w-6xl mx-auto"
+          className="grid md:grid-cols-12 grid-cols-6 gap-4 h-full max-w-6xl mx-auto"
         >
           <section className="col-span-6 flex justify-center items-start h-full">
             <Card
@@ -215,7 +215,7 @@ export default function CardId() {
               <h2 className="text-lg pb-3 font-bold">Gradient</h2>
               <div className="py-3">
                 <p className="pb-2">Type:</p>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 grid-cols-1 gap-6">
                   <button
                     type="button"
                     onClick={() => setGradientType("linear")}
@@ -236,7 +236,7 @@ export default function CardId() {
                   </button>
                 </div>
               </div>
-              <div className="py-3 grid grid-cols-2 gap-6">
+              <div className="py-3 grid lg:grid-cols-2 grid-cols-1 gap-6">
                 <div>
                   <p className="pb-2">Colors:</p>
                   <div className="flex gap-6">
@@ -255,7 +255,7 @@ export default function CardId() {
                   )}
                 </div>
               </div>
-              <div className="py-3 grid grid-cols-2 gap-6">
+              <div className="py-3 grid lg:grid-cols-2 grid-cols-1 gap-6">
                 <div>
                   <p className="pb-2">Curve:</p>
                   <EasingCurve setPoints={setPoints} />

@@ -2,6 +2,8 @@ import connnect from "@/db/db";
 import Cards from "@/models/card.model";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = 'force-static'
+
 connnect();
 
 export async function GET(

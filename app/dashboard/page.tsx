@@ -6,7 +6,7 @@ import Link from "next/link";
 export default async function Dashboard() {
   return (
     <main className="relative">
-      <nav className="-mx-3 -mt-2 px-3 py-2 flex justify-between items-center sticky top-0 bg-white border-b-2 border-black z-50">
+      <nav className="-mx-3 -mt-2 px-3 py-2 flex justify-between items-center bg-white border-b-2 border-black z-50">
         <h2 style={{ fontFamily: "cursive" }} className="text-lg font-bold">
           WizQRs
         </h2>
