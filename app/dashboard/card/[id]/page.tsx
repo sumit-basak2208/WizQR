@@ -142,8 +142,8 @@ export default function CardId() {
         QRColors: [qrBgColor, qrFgColor],
         points: points,
       };
-      const res = await fetch("/api/v1/card", {
-        method: "POST",
+      const res = await fetch(`/api/v1/card/${params.id}`, {
+        method: "PUT",
         body: JSON.stringify(data),
       });
       const resData = await res.json();
@@ -152,7 +152,7 @@ export default function CardId() {
         setIsLoading(false);
         return;
       }
-      toast.success("Card created!");
+      toast.success("Card updated!");
       router.push("/dashboard");
     } catch (error: unknown) {
       const err = error as Error;
