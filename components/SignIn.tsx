@@ -88,6 +88,8 @@ export default function SignIn() {
             <div className="mt-2">
               <label className="text-gray-600 text-xs ml-1">Password</label>
               <input
+                min={8}
+                max={12}
                 onChange={(ev) => setPassword(ev.target.value)}
                 value={password}
                 name="password"
