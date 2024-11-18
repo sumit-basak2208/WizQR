@@ -1,6 +1,7 @@
 import connnect from "@/db/db";
 import Cards from "@/models/card.model";
 import { getUserId } from "@/utils/utility";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -102,6 +103,8 @@ export async function PUT(
     card.points = points;
 
     await card.save();
+
+    revalidatePath(`/api/v1/redirect/${card.urlCode}`);
 
     return NextResponse.json({
       message: "Card updated ssuccessfully",
