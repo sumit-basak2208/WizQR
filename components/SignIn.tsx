@@ -100,6 +100,9 @@ export default function SignIn() {
                 disabled={isLoading}
               />
             </div>
+            <p className="cursor-pointer font-semibold hover:underline text-right text-sm text-purple-400">
+              Forgot password?
+            </p>
           </>
         ) : (
           <>
