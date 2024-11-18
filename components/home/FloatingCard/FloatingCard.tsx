@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import "./FloatingCard.css";
+import { QRCode } from "react-qrcode-logo";
 
 export default function FloatingCard() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -37,7 +38,7 @@ export default function FloatingCard() {
             ref={cardRef}
             className="text-white lg:text-9xl md:text-7xl text-5xl font-bold md:ml-20 ml-0 md:text-left text-center"
           >
-            Elevate your{" "}<br className="sm:hidden block"/>
+            Elevate your <br className="sm:hidden block" />
             <span className="animated-gradient">
               <TypeAnimation
                 sequence={[
@@ -100,7 +101,15 @@ export default function FloatingCard() {
               boxShadow: "0px 3px 9px rgba(0, 0, 0, 0.3)",
               background: "linear-gradient(to right,#d567b0,#a04a8f)",
             }}
-          />
+          >
+            <QRCode
+              value={"https://heaven-hell-ai.vercel.app/"}
+              eyeRadius={10}
+              // qrStyle="fluid"
+              bgColor={"#ffffff00"}
+              fgColor={"#ffffff"}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
       <motion.div
@@ -146,7 +155,15 @@ export default function FloatingCard() {
               boxShadow: "0px 3px 9px rgba(0, 0, 0, 0.3)",
               background: "linear-gradient(to right,#22139c,#3cb37c)",
             }}
-          />
+          >
+            <QRCode
+              value={"https://github.com/sumit-basak2208"}
+              eyeRadius={10}
+              // qrStyle="fluid"
+              bgColor={"#ffffff00"}
+              fgColor={"#ffffff"}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
       <motion.div
@@ -192,7 +209,15 @@ export default function FloatingCard() {
               boxShadow: "0px 3px 9px rgba(0, 0, 0, 0.3)",
               background: "linear-gradient(to right,#5e87c5,#14b596)",
             }}
-          />
+          >
+            <QRCode
+              value={"https://github.com/sumit-basak2208"}
+              eyeRadius={10}
+              // qrStyle="fluid"
+              bgColor={"#ffffff00"}
+              fgColor={"#ffffff"}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
       <motion.div
@@ -238,7 +263,15 @@ export default function FloatingCard() {
               boxShadow: "0px 3px 9px rgba(0, 0, 0, 0.3)",
               background: "linear-gradient(to right,#5c09a4,#86321a)",
             }}
-          />
+          >
+            <QRCode
+              value={"https://github.com/sumit-basak2208"}
+              eyeRadius={10}
+              // qrStyle="fluid"
+              bgColor={"#ffffff00"}
+              fgColor={"#ffffff"}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
       <motion.div
@@ -284,7 +317,15 @@ export default function FloatingCard() {
               boxShadow: "0px 3px 9px rgba(0, 0, 0, 0.3)",
               background: "linear-gradient(to right,#c9ae2c,#14b285)",
             }}
-          />
+          >
+            <QRCode
+              value={"https://github.com/sumit-basak2208"}
+              eyeRadius={10}
+              // qrStyle="fluid"
+              bgColor={"#ffffff00"}
+              fgColor={"#ffffff"}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
       <motion.div
@@ -330,7 +371,15 @@ export default function FloatingCard() {
               boxShadow: "0px 3px 9px rgba(0, 0, 0, 0.3)",
               background: "linear-gradient(to right,#82f7ab,#f3c281)",
             }}
-          />
+          >
+            <QRCode
+              value={"https://github.com/sumit-basak2208"}
+              eyeRadius={10}
+              // qrStyle="fluid"
+              bgColor={"#ffffff00"}
+              fgColor={"#ffffff"}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
       <motion.div
@@ -376,7 +425,15 @@ export default function FloatingCard() {
               boxShadow: "0px 3px 9px rgba(0, 0, 0, 0.3)",
               background: "linear-gradient(to right,#4226bf,#bb53e0)",
             }}
-          />
+          >
+            <QRCode
+              value={"https://github.com/sumit-basak2208"}
+              eyeRadius={10}
+              // qrStyle="fluid"
+              bgColor={"#ffffff00"}
+              fgColor={"#ffffff"}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
     </div>
