@@ -10,7 +10,7 @@ export default function Home() {
         <div className="flex md:border-r-4 border-0 border-black relative items-center md:min-h-max min-h-[100dvh]">
           <div className="md:ml-16 md:mr-4 mb-10 md:px-0 px-3 md:grow-0 grow md:text-left text-center md:block flex flex-col items-center justify-center">
             <h1 className="xl:text-3xl md:text-2xl xs:text-3xl text-2xl font-bold">
-              Create Your Custom QR-Linked <br className="sm:block hidden" />
+              Create Your Custom QR-Linked <br className="sm:!block hidden" />
               Cards with WizQR
             </h1>
             <p className="text-gray-800 mt-3 xl:text-base md:text-sm xs:text-base text-sm max-w-[500px]">
@@ -31,7 +31,7 @@ export default function Home() {
           </div>
           <div className="w-16 h-16 absolute border-t-4 bg-white -bottom-[34px] -right-[31.5px] z-20 border-black rotate-[50deg]"></div>
         </div>
-        <div className="hidden md:block h-[calc(100dvh-46px)] overflow-hidden relative border-b-4 border-black">
+        <div className="hidden md:!block h-[calc(100dvh-46px)] overflow-hidden relative border-b-4 border-black">
           <motion.div
             animate={{ x: 200, y: 115.5 }}
             transition={{ ease: "linear", repeat: Infinity, duration: 4 }}

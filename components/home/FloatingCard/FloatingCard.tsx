@@ -38,7 +38,7 @@ export default function FloatingCard() {
             ref={cardRef}
             className="text-white lg:text-9xl md:text-7xl text-5xl font-bold md:ml-20 ml-0 md:text-left text-center"
           >
-            Elevate your <br className="sm:hidden block" />
+            Elevate your <br className="sm:hidden !block" />
             <span className="animated-gradient">
               <TypeAnimation
                 sequence={[
