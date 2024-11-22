@@ -39,30 +39,79 @@ export default function SignIn() {
     }
     setIsLoading(false);
   };
-  const register = async (ev: React.FormEvent) => {
-    ev.preventDefault();
-    setIsLoading(true);
-    try {
-      const res = await fetch("/api/v1/user/register", {
-        method: "POST",
-        body: JSON.stringify({ username, password, email }),
-      });
-      const data = await res.json();
-      if (data.error) {
-        toast.error(data.error);
-        setIsLoading(false);
-        return;
-      }
-      toast.success("Registration successfull!");
-      setIsLogIn(true);
-    } catch (error: unknown) {
-      const err = error as Error;
-      console.log(err);
-      toast.error(err.message || "Something went wrong!");
-    }
-    setIsLoading(false);
-  };
+  // const register = async (ev: React.FormEvent) => {
+  //   ev.preventDefault();
+  //   setIsLoading(true);
+  //   try {
+  //     const res = await fetch("/api/v1/user/register", {
+  //       method: "POST",
+  //       body: JSON.stringify({ username, password, email }),
+  //     });
+  //     const data = await res.json();
+  //     if (data.error) {
+  //       toast.error(data.error);
+  //       setIsLoading(false);
+  //       return;
+  //     }
+  //     toast.success("Registration successfull!");
+  //     setIsLogIn(true);
+  //   } catch (error: unknown) {
+  //     const err = error as Error;
+  //     console.log(err);
+  //     toast.error(err.message || "Something went wrong!");
+  //   }
+  //   setIsLoading(false);
+  // };
 
+
+  //   const login = async (ev: React.FormEvent) => {
+  //     ev.preventDefault();
+  //     setIsLoading(true);
+  //     try {
+  //       const res = await fetch("/api/v1/user/login", {
+  //         method: "POST",
+  //         body: JSON.stringify({ username, password }),
+  //       });
+  //       const data = await res.json();
+  //       if (data.error) {
+  //         toast.error(data.error);
+  //         setIsLoading(false);
+  //         return;
+  //       }
+  //       toast.success("Login successfull!");
+  //       router.refresh();
+  //       router.push("/dashboard");
+  //     } catch (error: unknown) {
+  //       const err = error as Error;
+  //       console.log(err);
+  //       toast.error(err.message || "Something went wrong!");
+  //     }
+  //     setIsLoading(false);
+  // };
+  
+    const register = async (ev: React.FormEvent) => {
+      ev.preventDefault();
+      setIsLoading(true);
+      try {
+        const res = await fetch("/api/v1/user/register", {
+          method: "POST",
+          body: JSON.stringify({ username, password, email }),
+        });
+        const data = await res.json();
+        if (data.error) {
+          toast.error(data.error);
+          setIsLoading(false);
+          return;
+        }
+        toast.success("Registration successfull!");
+        setIsLogIn(true);
+      } catch (error: unknown) {
+        const err = error as Error;
+        console.log(err);
+        toast.error(err.message || "Something went wrong!");
+      }
+      setIsLoading(false);
+    };
   return (
     <>
       <h1 className="text-4xl font-bold mb-3">
