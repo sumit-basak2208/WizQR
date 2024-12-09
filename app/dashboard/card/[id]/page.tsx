@@ -36,14 +36,13 @@ export default function CardId() {
     0, 10, 20, 30, 40, 50, 60, 70, 80, 100,
   ]);
 
-    const [controlPoints, setControlPoints] = useState<{
-      p1: Point;
-      p2: Point;
-    }>({
-      p1: { x: 50, y: 150 }, // Control point 1
-      p2: { x: 150, y: 50 }, // Control point 2
-    });
-
+  const [controlPoints, setControlPoints] = useState<{
+    p1: Point;
+    p2: Point;
+  }>({
+    p1: { x: 50, y: 150 }, // Control point 1
+    p2: { x: 150, y: 50 }, // Control point 2
+  });
 
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -119,8 +118,10 @@ export default function CardId() {
         backgroundColors,
         QRColors,
         angle,
+        controlPoints,
       }: crd = dt.card;
 
+      console.log(controlPoints);
       setGradientType(gradientType);
       setQrValue(url);
       setPoints(points);
@@ -131,6 +132,7 @@ export default function CardId() {
       setQrBgColor(QRColors[0]);
       setQrFgColor(QRColors[1]);
       setAngle(angle);
+      controlPoints && setControlPoints(controlPoints);
     } catch (error: unknown) {
       const err = error as Error;
       console.log(error);
@@ -150,6 +152,7 @@ export default function CardId() {
         backgroundColors: [bgColor1, bgColor2],
         QRColors: [qrBgColor, qrFgColor],
         points: points,
+        controlPoints
       };
       const res = await fetch(`/api/v1/card/${params.id}`, {
         method: "PUT",

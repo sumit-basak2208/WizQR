@@ -68,6 +68,7 @@ export default function CardCreate() {
         backgroundColors: [bgColor1, bgColor2],
         QRColors: [qrBgColor, qrFgColor],
         points: points,
+        controlPoints,
       };
       const res = await fetch("/api/v1/card", {
         method: "POST",
