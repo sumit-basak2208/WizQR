@@ -10,6 +10,7 @@ import Card from "@/components/Card";
 import toast from "react-hot-toast";
 import { Loader, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { Point } from "@/type/card";
 
 export default function CardCreate() {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,6 +33,14 @@ export default function CardCreate() {
   const [points, setPoints] = useState<number[]>([
     0, 10, 20, 30, 40, 50, 60, 70, 80, 100,
   ]);
+
+  const [controlPoints, setControlPoints] = useState<{
+    p1: Point;
+    p2: Point;
+  }>({
+    p1: { x: 50, y: 150 }, // Control point 1
+    p2: { x: 150, y: 50 }, // Control point 2
+  });
 
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -182,7 +191,11 @@ export default function CardCreate() {
               <div className="py-3 grid lg:grid-cols-2 grid-cols-1 gap-6">
                 <div>
                   <p className="pb-2">Curve:</p>
-                  <EasingCurve setPoints={setPoints} />
+                  <EasingCurve
+                    controlPoints={controlPoints}
+                    setControlPoints={setControlPoints}
+                    setPoints={setPoints}
+                  />
                 </div>
                 <div>
                   {gradientType == "linear" && (

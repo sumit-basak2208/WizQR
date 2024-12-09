@@ -1,5 +1,6 @@
 "uuse client";
 
+import { Point } from "@/type/card";
 import { RefreshCw } from "lucide-react";
 import React, {
   useState,
@@ -10,21 +11,16 @@ import React, {
   SetStateAction,
 } from "react";
 
-interface Point {
-  x: number;
-  y: number;
-}
-
 export default function EasingCurve({
   setPoints,
+  controlPoints,
+  setControlPoints,
 }: {
   setPoints: Dispatch<SetStateAction<number[]>>;
+  controlPoints: { p1: Point; p2: Point };
+  setControlPoints: Dispatch<SetStateAction<{ p1: Point; p2: Point }>>;
 }) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const [controlPoints, setControlPoints] = useState<{ p1: Point; p2: Point }>({
-    p1: { x: 50, y: 150 }, // Control point 1
-    p2: { x: 150, y: 50 }, // Control point 2
-  });
 
   const width = 200;
   const height = 200;
@@ -85,7 +81,10 @@ export default function EasingCurve({
 
   return (
     <div className="relative group w-fit">
-      <button className="absolute group-hover:block hidden left-2 top-2">
+      <button
+        type="button"
+        className="absolute group-hover:block hidden left-2 top-2"
+      >
         <RefreshCw
           onClick={() =>
             setControlPoints({
@@ -135,6 +134,7 @@ export default function EasingCurve({
 
       {/* Control buttons */}
       <button
+        type="button"
         className="absolute bg-white rounded-full w-6 h-6 shadow-lg border"
         style={{
           left: `${controlPoints.p1.x - 12}px`,
@@ -153,6 +153,7 @@ export default function EasingCurve({
       ></button>
 
       <button
+        type="button"
         className="absolute bg-white rounded-full w-6 h-6 shadow-lg border"
         style={{
           left: `${controlPoints.p2.x - 12}px`,
