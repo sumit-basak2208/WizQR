@@ -132,7 +132,7 @@ export default function CardId() {
       setQrBgColor(QRColors[0]);
       setQrFgColor(QRColors[1]);
       setAngle(angle);
-      controlPoints && setControlPoints(controlPoints);
+      if(controlPoints) setControlPoints(controlPoints);
     } catch (error: unknown) {
       const err = error as Error;
       console.log(error);

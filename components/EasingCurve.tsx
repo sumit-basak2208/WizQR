@@ -3,7 +3,6 @@
 import { Point } from "@/type/card";
 import { RefreshCw } from "lucide-react";
 import React, {
-  useState,
   useCallback,
   useRef,
   useEffect,
