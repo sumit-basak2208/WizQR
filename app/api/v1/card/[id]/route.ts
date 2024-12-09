@@ -67,7 +67,10 @@ export async function PUT(
       QRColors,
       angle,
       points,
+      controlPoints,
     } = await req.json();
+
+    console.log(controlPoints);
 
     const data = await params;
     const tokenCookie = (await cookies()).get("token");
@@ -101,6 +104,7 @@ export async function PUT(
     card.QRColors = QRColors;
     card.angle = angle;
     card.points = points;
+    card.controlPoints = controlPoints;
 
     await card.save();
 

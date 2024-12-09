@@ -75,7 +75,10 @@ export async function POST(req: NextRequest) {
       QRColors,
       angle,
       points,
+      controlPoints,
     } = await req.json();
+
+    console.log(controlPoints);
 
     const newCard = new Cards({
       url,
@@ -85,6 +88,7 @@ export async function POST(req: NextRequest) {
       QRColors,
       points,
       angle,
+      controlPoints,
       urlCode: randomstring.generate(10),
       owner: userId,
     });
