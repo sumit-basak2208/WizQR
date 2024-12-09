@@ -25,6 +25,10 @@ const cardSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    controlPoints: {
+      p1: { x: Number, y: Number },
+      p2: { x: Number, y: Number },
+    },
   },
   { timestamps: true }
 );
