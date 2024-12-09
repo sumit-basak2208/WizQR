@@ -4,7 +4,7 @@ import ColorPicker from "@/components/ColorPicker";
 import EasingCurve from "@/components/EasingCurve";
 import PositionSelector from "@/components/PositionSelector";
 import { Input } from "@/components/ui/input";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { Card as crd } from "@/type/card";
@@ -218,7 +218,10 @@ export default function CardId() {
                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-6">
                   <button
                     type="button"
-                    onClick={() => setGradientType("linear")}
+                    onClick={(ev: MouseEvent<HTMLButtonElement>) => {
+                      ev.stopPropagation();
+                      setGradientType("linear");
+                    }}
                     className={`${
                       gradientType === "linear" ? "bg-black text-white" : ""
                     } transition-all px-4 py-1 border text-xl font-semibold rounded`}
@@ -227,7 +230,10 @@ export default function CardId() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setGradientType("radial")}
+                    onClick={(ev: MouseEvent<HTMLButtonElement>) => {
+                      ev.stopPropagation();
+                      setGradientType("radial");
+                    }}
                     className={`${
                       gradientType === "radial" ? "bg-black text-white" : ""
                     } transition-all px-4 py-1 border text-xl font-semibold rounded`}
