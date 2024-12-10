@@ -1,3 +1,4 @@
+import HomeBannerCard from "@/components/home/HomeBannerCard/HomeBannerCard";
 import SignUp from "@/components/SignUp";
 import * as motion from "framer-motion/client";
 
@@ -10,9 +11,10 @@ export default function Login() {
           transition={{ ease: "linear", repeat: Infinity, duration: 4 }}
           className="design-container absolute inset-0 -top-[250px] -left-[250px]"
         ></motion.div>
+        <HomeBannerCard />
       </div>
       <div className="flex-col flex items-center gap-2 justify-center h-[calc(100dvh-46px)]">
-        <SignUp/>
+        <SignUp />
       </div>
     </main>
   );

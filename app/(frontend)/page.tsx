@@ -1,4 +1,5 @@
 import FloatingCard from "@/components/home/FloatingCard/FloatingCard";
+import HomeBannerCard from "@/components/home/HomeBannerCard/HomeBannerCard";
 import * as motion from "framer-motion/client";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
@@ -37,6 +38,7 @@ export default function Home() {
             transition={{ ease: "linear", repeat: Infinity, duration: 4 }}
             className="design-container absolute inset-0 -top-[250px] -left-[250px]"
           ></motion.div>
+          <HomeBannerCard/>
         </div>
       </main>
       <section className="overflow-hidden">
