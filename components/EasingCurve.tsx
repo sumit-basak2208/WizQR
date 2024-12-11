@@ -60,6 +60,21 @@ export default function EasingCurve({
     return { x, y };
   };
 
+  // const calculateBezierPoint = (t: number): Point => {
+  //   const { p1, p2 } = controlPoints;
+  //   const x =
+  //     (1 - t) * (1 - t) * (1 - t) * 0 +
+  //     3 * (1 - t) * (1 - t) * t * p1.x +
+  //     3 * (1 - t) * t * t * p2.x +
+  //     t * t * t * width;
+  //   const y =
+  //     (1 - t) * (1 - t) * (1 - t) * height +
+  //     3 * (1 - t) * (1 - t) * t * p1.y +
+  //     3 * (1 - t) * t * t * p2.y +
+  //     t * t * t * 0;
+  //   return { x, y };
+  // };
+
   const getEqualDistancePoints = (): Point[] => {
     const points: Point[] = [];
     for (let i = 0; i < 10; i++) {
