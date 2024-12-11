@@ -82,6 +82,14 @@ export default function EasingCurve({
     }
     return points;
   };
+  
+  // const getEqualDistancePoints = (): Point[] => {
+  //   const points: Point[] = [];
+  //   for (let i = 0; i < 10; i++) {
+  //     points.push(calculateBezierPoint(i / 10));
+  //   }
+  //   return points;
+  // };
 
   const calculatePercentagePoints = (): number[] => {
     return getEqualDistancePoints().map((pt) => (pt.x / width) * 100);
