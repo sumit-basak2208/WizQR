@@ -12,7 +12,7 @@ const HomeBannerCard = () => {
         className="relative w-[320px] h-[450px]"
       >
         <div
-          className="top-[51px] left-[56px] bg-white border px-7 pt-7 border-[inset] w-[140px] h-[220px] absolute overflow-hidden rounded-lg shadow"
+          className="top-[51px] left-[56px] bg-white border px-7 pt-7 border-[inset] w-[160px] h-[220px] absolute overflow-hidden rounded-lg shadow"
           style={{
             boxShadow: "0px 3px 9px rgba(0, 0, 0, 0.3)",
             background: "linear-gradient(to right,#d567b0,#a04a8f)",
@@ -29,7 +29,7 @@ const HomeBannerCard = () => {
           />
         </div>
         <div
-          className="top-[123px] left-[105px] bg-white border px-7 pt-7 border-[inset] w-[140px] h-[220px] absolute overflow-hidden rounded-lg shadow"
+          className="top-[123px] left-[105px] bg-white border px-7 pt-7 border-[inset] w-[160px] h-[220px] absolute overflow-hidden rounded-lg shadow"
           style={{
             boxShadow: "0px 3px 9px rgba(0, 0, 0, 0.3)",
             background: "linear-gradient(to right,#82f7ab,#f3c281)",
@@ -50,7 +50,7 @@ const HomeBannerCard = () => {
           />
         </div>
         <div
-          className="top-[256px] left-[80px] bg-white border px-7 pt-7 border-[inset] w-[140px] h-[220px] absolute overflow-hidden rounded-lg shadow"
+          className="top-[256px] left-[80px] bg-white border px-7 pt-7 border-[inset] w-[160px] h-[220px] absolute overflow-hidden rounded-lg shadow"
           style={{
             boxShadow: "0px 3px 9px rgba(0, 0, 0, 0.3)",
             background: "linear-gradient(to right,#4226bf,#bb53e0)",
