@@ -14,7 +14,7 @@ export default function Login() {
         <HomeBannerCard />
       </div>
       <div className="flex-col flex items-center gap-2 justify-center h-[calc(100dvh-46px)]">
-        <SignIn />
+        <SignIn isLogIn={true} />
       </div>
     </main>
   );
