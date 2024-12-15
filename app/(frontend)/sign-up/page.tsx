@@ -1,5 +1,5 @@
 import HomeBannerCard from "@/components/home/HomeBannerCard/HomeBannerCard";
-import SignUp from "@/components/SignUp";
+import SignIn from "@/components/SignIn";
 import * as motion from "framer-motion/client";
 
 export default function Login() {
@@ -14,7 +14,7 @@ export default function Login() {
         <HomeBannerCard />
       </div>
       <div className="flex-col flex items-center gap-2 justify-center h-[calc(100dvh-46px)]">
-        <SignUp />
+        <SignIn isLogIn={false} />
       </div>
     </main>
   );

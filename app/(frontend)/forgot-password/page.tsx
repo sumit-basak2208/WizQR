@@ -1,8 +1,13 @@
+import ForgotPassword from "@/components/ForgotPassword";
 import HomeBannerCard from "@/components/home/HomeBannerCard/HomeBannerCard";
-import SignIn from "@/components/SignIn";
 import * as motion from "framer-motion/client";
 
-export default function Login() {
+export default async function Login({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
+  const { token } = await searchParams;
   return (
     <main className="grid md:grid-cols-2 grid-cols-1">
       <div className="hidden md:!block h-[calc(100dvh-46px)] overflow-hidden relative">
@@ -14,7 +19,7 @@ export default function Login() {
         <HomeBannerCard />
       </div>
       <div className="flex-col flex items-center gap-2 justify-center h-[calc(100dvh-46px)]">
-        <SignIn isLogIn={true} />
+              <ForgotPassword isOTP={Boolean(token)} token={token} />
       </div>
     </main>
   );

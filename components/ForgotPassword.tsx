@@ -4,28 +4,29 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import OtpInput from "react-otp-input";
 
-export default function SignUp() {
-  const [isOTP, setIsOTP] = useState(false);
+export default function ForgotPassword({
+  isOTP,
+  token,
+}: {
+  isOTP: boolean;
+  token?: string;
+}) {
   const [isLoading, setIsLoading] = useState(false);
 
   // Values
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [OTP, setOTP] = useState("");
+  const [email, setEmail] = useState("");
 
   const router = useRouter();
 
-  const verifyOTP = async (ev: React.FormEvent) => {
+  const resetPassword = async (ev: React.FormEvent) => {
     ev.preventDefault();
     setIsLoading(true);
     try {
       const res = await fetch("/api/v1/user/login", {
         method: "POST",
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ password, token }),
       });
       const data = await res.json();
       if (data.error) {
@@ -43,13 +44,13 @@ export default function SignUp() {
     }
     setIsLoading(false);
   };
-  const register = async (ev: React.FormEvent) => {
+  const forgotPassword = async (ev: React.FormEvent) => {
     ev.preventDefault();
     setIsLoading(true);
     try {
       const res = await fetch("/api/v1/user/register", {
         method: "POST",
-        body: JSON.stringify({ username, password, email }),
+        body: JSON.stringify({ email }),
       });
       const data = await res.json();
       if (data.error) {
@@ -58,7 +59,6 @@ export default function SignUp() {
         return;
       }
       toast.success("Registration successfull!");
-      setIsOTP(true);
     } catch (error: unknown) {
       const err = error as Error;
       console.log(err);
@@ -69,46 +69,30 @@ export default function SignUp() {
 
   return (
     <>
-      <h1 className="text-4xl font-bold mb-3">{isOTP ? "OTP" : "Register"}</h1>
-      <form onSubmit={(ev) => (isOTP ? verifyOTP(ev) : register(ev))}>
+      <h1 className="text-4xl font-bold mb-3">
+        {isOTP ? "Reset password" : "Forgot password"}
+      </h1>
+      <form onSubmit={(ev) => (isOTP ? resetPassword(ev) : forgotPassword(ev))}>
         {isOTP ? (
           <>
-            <div>
-              <OtpInput
-                containerStyle={{
-                  display: "flex",
-                  width: "100%",
-                  justifyContent: "space-around"
-                }}
-                value={OTP}
-                onChange={setOTP}
-                numInputs={6}
-                renderInput={(props) => (
-                  <input
-                    {...props}
-                    style={{
-                      width: "40px"
-                    }}
-                    className="text-center text-lg max-w-full w-80 block p-2 rounded-sm border"
-                  />
-                )}
+            <div className="mt-2">
+              <label className="text-gray-600 text-xs ml-1">Password</label>
+              <input
+                min={8}
+                max={12}
+                onChange={(ev) => setPassword(ev.target.value)}
+                value={password}
+                name="password"
+                type="password"
+                className="max-w-full w-80 block p-2 rounded-sm border"
+                placeholder="password"
+                required
+                disabled={isLoading}
               />
             </div>
           </>
         ) : (
           <>
-            <div className="mt-2">
-              <label className="text-gray-600 text-xs ml-1">Username</label>
-              <input
-                onChange={(ev) => setUsername(ev.target.value)}
-                value={username}
-                name="username"
-                className="max-w-full w-80 block p-2 rounded-sm border"
-                placeholder="Username"
-                required
-                disabled={isLoading}
-              />
-            </div>
             <div className="mt-2">
               <label className="text-gray-600 text-xs ml-1">Email</label>
               <input
@@ -122,19 +106,6 @@ export default function SignUp() {
                 disabled={isLoading}
               />
             </div>
-            <div className="mt-2">
-              <label className="text-gray-600 text-xs ml-1">Password</label>
-              <input
-                onChange={(ev) => setPassword(ev.target.value)}
-                value={password}
-                name="password"
-                type="password"
-                className="max-w-full w-80 block p-2 rounded-sm border"
-                placeholder="password"
-                required
-                disabled={isLoading}
-              />
-            </div>
           </>
         )}
         <button
@@ -142,7 +113,7 @@ export default function SignUp() {
           disabled={isLoading}
           className="bg-white text-center w-80 rounded-lg mt-5 h-12 relative text-black hover:text-white transition-colors text-xl font-semibold group border"
         >
-          <p className="-translate-x-2">{isOTP ? "Verify" : "Register"}</p>
+          <p className="-translate-x-2">Reset password</p>
 
           <div
             className={`bg-purple-400 rounded-lg h-12 ${
@@ -157,17 +128,15 @@ export default function SignUp() {
           </div>
         </button>
       </form>
-      {!isOTP && (
-        <p className="text-gray-600 text-sm mt-4">
-          Already have an account?{" "}
-          <Link
-            href="/login"
-            className="text-purple-400 hover:underline font-semibold"
-          >
-            Sign in!
-          </Link>
-        </p>
-      )}
+      <p className="text-gray-600 text-sm mt-4">
+        Already have an account?{" "}
+        <Link
+          href="/login"
+          className="text-purple-400 hover:underline font-semibold"
+        >
+          Sign in!
+        </Link>
+      </p>
     </>
   );
 }
