@@ -1,6 +1,5 @@
 import ForgotPassword from "@/components/ForgotPassword";
 import HomeBannerCard from "@/components/home/HomeBannerCard/HomeBannerCard";
-import SignIn from "@/components/SignIn";
 import * as motion from "framer-motion/client";
 
 export default async function Login({
