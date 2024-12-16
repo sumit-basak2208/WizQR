@@ -24,7 +24,7 @@ export default function ForgotPassword({
     ev.preventDefault();
     setIsLoading(true);
     try {
-      const res = await fetch("/api/v1/user/login", {
+      const res = await fetch("/api/v1/user/reset-password", {
         method: "POST",
         body: JSON.stringify({ password, token }),
       });
@@ -34,9 +34,9 @@ export default function ForgotPassword({
         setIsLoading(false);
         return;
       }
-      toast.success("Login successfull!");
+      toast.success("Password changed successfully");
       router.refresh();
-      router.push("/dashboard");
+      router.push("/login");
     } catch (error: unknown) {
       const err = error as Error;
       console.log(err);
@@ -48,7 +48,7 @@ export default function ForgotPassword({
     ev.preventDefault();
     setIsLoading(true);
     try {
-      const res = await fetch("/api/v1/user/register", {
+      const res = await fetch("/api/v1/user/forgot-password", {
         method: "POST",
         body: JSON.stringify({ email }),
       });
@@ -58,7 +58,9 @@ export default function ForgotPassword({
         setIsLoading(false);
         return;
       }
-      toast.success("Registration successfull!");
+      toast.success(
+        "Password reset link sent successfully! Please check your mail"
+      );
     } catch (error: unknown) {
       const err = error as Error;
       console.log(err);
@@ -111,7 +113,7 @@ export default function ForgotPassword({
         <button
           type="submit"
           disabled={isLoading}
-          className="bg-white text-center w-80 rounded-lg mt-5 h-12 relative text-black hover:text-white transition-colors text-xl font-semibold group border"
+          className="bg-white text-center w-80 rounded-lg mt-5 h-12 relative text-black hover:text-white transition-colors font-semibold group border"
         >
           <p className="-translate-x-2">Reset password</p>
 
