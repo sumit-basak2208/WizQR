@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
     await user.save();
 
     // Construct reset link
-    const resetLink = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${resetToken}`;
+    const resetLink = `${process.env.NEXT_PUBLIC_APP_URL}/forgot-password?token=${resetToken}`;
 
     // Prepare the plain text version
     const textVersion = `You requested a password reset. Use the link below to reset your password:

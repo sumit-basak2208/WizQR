@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 import User from "@/models/user.model";
 import connectDB from "@/db/db";
+import { generateHash } from "@/utils/encryption";
 
 export async function POST(req: NextRequest) {
   try {
     await connectDB();
-    const { token, newPassword } = await req.json();
+    const { token, password } = await req.json();
 
     // Find the user with the matching token and ensure it is not expired
     const user = await User.findOne({
@@ -21,7 +22,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    user.password = newPassword;
+    user.password = generateHash(password);
 
     // Clear the password reset fields
     user.passwordResetToken = undefined;
