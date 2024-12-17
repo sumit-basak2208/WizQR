@@ -19,6 +19,13 @@ export async function POST(req: NextRequest) {
       password: generateHash(password),
     });
 
+    
+    // const newUser = new Users({
+    //   username,
+    //   email,
+    //   password: generateHash(password),
+    // });
+
     await newUser.save();
     return NextResponse.json({
       message: "Registration successfull",
