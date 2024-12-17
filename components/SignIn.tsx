@@ -1,11 +1,11 @@
 "use client";
 import { Loader, LogInIcon } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-export default function SignIn() {
-  const [isLogIn, setIsLogIn] = useState(true);
+export default function SignIn({ isLogIn }: { isLogIn: boolean }) {
   const [isLoading, setIsLoading] = useState(false);
 
   // Values
@@ -54,7 +54,7 @@ export default function SignIn() {
         return;
       }
       toast.success("Registration successfull!");
-      setIsLogIn(true);
+      router.push("/login");
     } catch (error: unknown) {
       const err = error as Error;
       console.log(err);
@@ -100,9 +100,9 @@ export default function SignIn() {
                 disabled={isLoading}
               />
             </div>
-            <p className="cursor-pointer font-semibold hover:underline text-right text-sm text-purple-400">
+            <Link href="/forgot-password" className="block cursor-pointer font-semibold hover:underline text-right text-sm text-purple-400">
               Forgot password?
-            </p>
+            </Link>
           </>
         ) : (
           <>
@@ -169,22 +169,22 @@ export default function SignIn() {
       {isLogIn ? (
         <p className="text-gray-600 text-sm mt-4">
           Dont have an account?{" "}
-          <button
-            onClick={() => setIsLogIn(false)}
+          <Link
+            href="/sign-up"
             className="text-purple-400 hover:underline font-semibold"
           >
             Sign up!
-          </button>
+          </Link>
         </p>
       ) : (
         <p className="text-gray-600 text-sm mt-4">
           Already have an account?{" "}
-          <button
-            onClick={() => setIsLogIn(true)}
+          <Link
+            href="/login"
             className="text-purple-400 hover:underline font-semibold"
           >
             Sign in!
-          </button>
+          </Link>
         </p>
       )}
     </>
